@@ -1,39 +1,98 @@
 import Image from "next/image";
+import { Carousel } from "@/components/ui/Carousel";
 import { PillLink } from "@/components/ui/PillLink";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Star } from "@/components/ui/Star";
-import { feedPosts, feedSection, type FeedPost } from "@/content/sections";
+import { feedPosts, feedSection } from "@/content/sections";
 import { contact, sectionIds } from "@/content/site";
+import { getInstagramPosts } from "@/lib/instagram";
 
-function FeedTile({ post, delay }: { post: FeedPost; delay: number }) {
-  return (
-    <Reveal
-      delay={delay}
-      data-hover
-      className="aspect-[4/5] overflow-hidden rounded-[18px] border border-rule transition-[transform,border-color] duration-500 ease-[var(--ease-out-expo)] hover:-translate-y-1.5 hover:border-accent"
-    >
-      {post.src ? (
-        <Image
-          src={post.src}
-          alt={post.alt}
-          width={800}
-          height={1000}
-          sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw"
-          className="size-full object-cover"
-        />
-      ) : (
-        // Empty slot: keeps the grid rhythm until real feed art is dropped in.
-        <div className="flex size-full items-center justify-center bg-ink/[0.03] p-6 text-center">
-          <span className="font-mono text-[10.5px] tracking-[.18em] text-muted">{post.alt}</span>
+/** Widths are fluid so a partial slide peeks in, hinting the track scrolls. */
+const SLIDE = "w-[78%] shrink-0 snap-start sm:w-[46%] lg:w-[30%] xl:w-[23%]";
+
+const TILE =
+  "relative block aspect-[4/5] overflow-hidden rounded-[18px] border border-rule transition-[transform,border-color] duration-500 ease-[var(--ease-out-expo)] hover:-translate-y-1.5 hover:border-accent";
+
+/** Both sources — curated files and the Instagram API — normalise to this. */
+interface Slide {
+  key: string;
+  src?: string;
+  alt: string;
+  href: string;
+  isVideo?: boolean;
+}
+
+function FeedSlide({ slide }: { slide: Slide }) {
+  // Nothing to link to until the image exists; keep the tile inert.
+  if (!slide.src) {
+    return (
+      <li className={SLIDE}>
+        <div className={TILE}>
+          <div className="flex size-full items-center justify-center bg-ink/[0.03] p-6 text-center">
+            <span className="font-mono text-[10.5px] tracking-[.18em] text-muted">{slide.alt}</span>
+          </div>
         </div>
-      )}
-    </Reveal>
+      </li>
+    );
+  }
+
+  return (
+    <li className={SLIDE}>
+      <a
+        href={slide.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        data-hover
+        className={TILE}
+      >
+        <Image
+          src={slide.src}
+          alt={slide.alt}
+          fill
+          sizes="(max-width: 640px) 78vw, (max-width: 1024px) 46vw, 23vw"
+          className="object-cover"
+        />
+        {slide.isVideo ? (
+          <span
+            aria-hidden="true"
+            className="absolute right-3 top-3 flex size-7 items-center justify-center rounded-full bg-ink/55 text-cream backdrop-blur-[2px]"
+          >
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </span>
+        ) : null}
+      </a>
+    </li>
   );
 }
 
-/** Instagram grid — a window into what the studio is currently shipping. */
-export function Feed() {
+/**
+ * Instagram carousel — a window into what the studio is currently shipping.
+ *
+ * Curated by hand from `feedPosts` today. If INSTAGRAM_ACCESS_TOKEN is ever
+ * set, the live API takes over automatically and nothing else has to change;
+ * see docs/instagram-token.md for how to obtain one.
+ */
+export async function Feed() {
+  const live = await getInstagramPosts(10);
+
+  const slides: Slide[] = live.length
+    ? live.map((post) => ({
+        key: post.id,
+        src: post.imageUrl,
+        alt: post.caption,
+        href: post.permalink,
+        isVideo: post.isVideo,
+      }))
+    : feedPosts.map((post) => ({
+        key: post.id,
+        src: post.src,
+        alt: post.alt,
+        href: post.permalink ?? contact.instagram,
+      }));
+
   return (
     <section
       id={sectionIds.feed}
@@ -73,13 +132,13 @@ export function Feed() {
           {feedSection.intro}
         </Reveal>
 
-        <div className="mt-[clamp(36px,6vh,56px)] grid grid-cols-[repeat(auto-fit,minmax(min(100%,300px),1fr))] gap-4">
-          {feedPosts.map((post, index) => (
-            <FeedTile key={post.id} post={post} delay={(index % 3) * 0.08} />
+        <Carousel label="Publicaciones de OUSHY Studio" className="mt-[clamp(36px,6vh,56px)]">
+          {slides.map((slide) => (
+            <FeedSlide key={slide.key} slide={slide} />
           ))}
-        </div>
+        </Carousel>
 
-        <Reveal className="mt-[clamp(36px,6vh,52px)] flex justify-center">
+        <Reveal className="mt-[clamp(28px,4vh,40px)] flex justify-center">
           <PillLink href={contact.instagram} variant="outline">
             {feedSection.cta}
           </PillLink>

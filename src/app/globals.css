@@ -191,6 +191,17 @@
     cursor: none;
   }
 
+  /* The carousel scrolls natively; the scrollbar itself would break the
+     editorial look, and the arrow buttons already expose the affordance. */
+  .no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
   /* Stroked display type used by the industries marquee. */
   .text-stroke {
     color: transparent;

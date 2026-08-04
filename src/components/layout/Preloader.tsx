@@ -6,6 +6,7 @@ import { useReducedMotion } from "@/hooks/useMediaQuery";
 import { site } from "@/content/site";
 import { brand, sized } from "@/lib/brand";
 
+const CURTAIN_LIFT_S = 1.45;
 const CURTAIN_MS = 2600;
 
 /**
@@ -28,7 +29,9 @@ export function Preloader() {
     <div
       aria-hidden="true"
       className="pointer-events-none fixed inset-0 z-[400] flex flex-col items-center justify-center gap-[26px] bg-cream will-change-transform"
-      style={{ animation: "curtain-up .9s var(--ease-in-out-expo) 1.45s forwards" }}
+      style={{
+        animation: `curtain-up .9s var(--ease-in-out-expo) ${CURTAIN_LIFT_S}s forwards`,
+      }}
     >
       <Image
         {...sized(brand.mark, 240)}

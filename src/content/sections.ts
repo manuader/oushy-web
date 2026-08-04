@@ -35,13 +35,13 @@ export const studio = {
   ],
 } as const;
 
-export type ServiceIcon = "target" | "identity" | "play" | "chart";
+import type { ServiceIconName } from "@/lib/brand";
 
 export interface Service {
   index: string;
   title: string;
   items: string[];
-  icon: ServiceIcon;
+  icon: ServiceIconName;
 }
 
 export const servicesSection = {
@@ -55,7 +55,7 @@ export const services: Service[] = [
   {
     index: "01",
     title: "estrategia",
-    icon: "target",
+    icon: "estrategia",
     items: [
       "Estrategia de marca y posicionamiento",
       "Consultoría y acompañamiento estratégico",
@@ -65,7 +65,7 @@ export const services: Service[] = [
   {
     index: "02",
     title: "identidad",
-    icon: "identity",
+    icon: "identidad",
     items: [
       "Branding e identidad visual",
       "Dirección creativa",
@@ -76,7 +76,7 @@ export const services: Service[] = [
   {
     index: "03",
     title: "contenido",
-    icon: "play",
+    icon: "contenido",
     items: [
       "Gestión integral de redes sociales",
       "Producción y edición de contenido audiovisual",
@@ -87,7 +87,7 @@ export const services: Service[] = [
   {
     index: "04",
     title: "performance",
-    icon: "chart",
+    icon: "performance",
     items: ["Publicidad en Meta Ads", "Lanzamientos y campañas"],
   },
 ];
@@ -135,11 +135,21 @@ export const manifesto = {
   body: "Nuestro objetivo es que cada cliente cuente con una estrategia de comunicación alineada con su negocio, capaz de diferenciarlo en un mercado cada vez más competitivo.",
 } as const;
 
+/**
+ * A curated feed slide. These are used whenever the Instagram API is not
+ * configured — which is the normal case unless INSTAGRAM_ACCESS_TOKEN is set.
+ *
+ * To publish one: drop the image in `public/feed/` and fill in `src`.
+ * Entries without a `src` render as an empty placeholder tile, so the carousel
+ * keeps its rhythm while the set is still being filled in.
+ */
 export interface FeedPost {
   id: string;
-  /** Path under /public. Leave empty to render the placeholder tile. */
+  /** Path under /public, e.g. "/feed/post-01.jpg". */
   src?: string;
   alt: string;
+  /** Link to the post on Instagram. Defaults to the profile. */
+  permalink?: string;
 }
 
 export const feedSection = {
@@ -151,12 +161,19 @@ export const feedSection = {
 } as const;
 
 export const feedPosts: FeedPost[] = [
-  { id: "ig-post-1", alt: "Post 01 del feed de OUSHY Studio" },
-  { id: "ig-post-2", alt: "Post 02 del feed de OUSHY Studio" },
-  { id: "ig-post-3", alt: "Post 03 del feed de OUSHY Studio" },
-  { id: "ig-post-4", alt: "Post 04 del feed de OUSHY Studio" },
-  { id: "ig-post-5", alt: "Post 05 del feed de OUSHY Studio" },
-  { id: "ig-post-6", alt: "Post 06 del feed de OUSHY Studio" },
+  // Reemplazá cada entrada por una publicación real:
+  //   { id: "verano-25", src: "/feed/verano-25.jpg", alt: "Campaña de verano para …",
+  //     permalink: "https://www.instagram.com/p/XXXXXXXXX/" },
+  { id: "post-01", alt: "Publicación 01 de OUSHY Studio" },
+  { id: "post-02", alt: "Publicación 02 de OUSHY Studio" },
+  { id: "post-03", alt: "Publicación 03 de OUSHY Studio" },
+  { id: "post-04", alt: "Publicación 04 de OUSHY Studio" },
+  { id: "post-05", alt: "Publicación 05 de OUSHY Studio" },
+  { id: "post-06", alt: "Publicación 06 de OUSHY Studio" },
+  { id: "post-07", alt: "Publicación 07 de OUSHY Studio" },
+  { id: "post-08", alt: "Publicación 08 de OUSHY Studio" },
+  { id: "post-09", alt: "Publicación 09 de OUSHY Studio" },
+  { id: "post-10", alt: "Publicación 10 de OUSHY Studio" },
 ];
 
 export const contactSection = {

@@ -1,10 +1,11 @@
+import Image from "next/image";
 import { HandwrittenNote } from "@/components/ui/HandwrittenNote";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { ServiceIcon } from "@/components/ui/ServiceIcon";
 import { Star } from "@/components/ui/Star";
 import { services, servicesSection, type Service } from "@/content/sections";
 import { sectionIds } from "@/content/site";
+import { brand, serviceIcons, sized } from "@/lib/brand";
 import { clsx } from "@/lib/clsx";
 
 /* Stacked on small screens, four editorial columns from `lg` up. */
@@ -39,7 +40,12 @@ function ServiceRow({ service, isLast }: { service: Service; isLast: boolean }) 
         ))}
       </Reveal>
 
-      <ServiceIcon name={service.icon} />
+      <Image
+        {...sized(serviceIcons[service.icon], 256)}
+        alt=""
+        aria-hidden="true"
+        className="w-full max-w-[116px] justify-self-end"
+      />
     </div>
   );
 }
@@ -50,9 +56,21 @@ export function Services() {
     <section
       id={sectionIds.services}
       aria-labelledby="servicios-heading"
-      className="border-t border-rule px-[clamp(20px,4.5vw,64px)] pb-[clamp(90px,13vh,140px)] pt-[clamp(80px,12vh,130px)]"
+      className="relative border-t border-rule px-[clamp(20px,4.5vw,64px)] pb-[clamp(90px,13vh,140px)] pt-[clamp(80px,12vh,130px)]"
     >
-      <div className="mx-auto max-w-[1280px]">
+      {/* Services was the one numbered section without a drawn motif of its
+          own. It sits in the bottom padding, clear of the last row. */}
+      <Reveal className="pointer-events-none absolute bottom-[clamp(12px,2vh,24px)] left-[clamp(14px,3vw,52px)]">
+        <Image
+          {...sized(brand.grayStar, 240)}
+          alt=""
+          aria-hidden="true"
+          className="block h-auto w-[clamp(54px,7vw,108px)] origin-center opacity-55 will-change-transform"
+          style={{ animation: "spin 60s linear infinite" }}
+        />
+      </Reveal>
+
+      <div className="relative mx-auto max-w-[1280px]">
         <SectionLabel index={servicesSection.index} label={servicesSection.label} />
 
         <div className="mt-[30px] flex flex-wrap items-end justify-between gap-x-10 gap-y-6">

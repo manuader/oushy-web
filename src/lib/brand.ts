@@ -19,8 +19,31 @@ export const brand = {
   star: { src: "/assets/oushy-star.png", ratio: 664 / 676 },
   outline: { src: "/assets/oushy-outline.png", ratio: 541 / 199 },
   uOutline: { src: "/assets/oushy-u-outline.png", ratio: 380 / 556 },
+  grayStar: { src: "/assets/OUSHY-gray-star.png", ratio: 1 },
+
+  /**
+   * Animated WebP, keyed out of the source clips in `assets-source/video/`.
+   * They must be rendered with `unoptimized`: the image optimizer would
+   * flatten an animation to a single still frame.
+   */
+  starMotion: { src: "/assets/motion/oushy-star.webp", ratio: 1 },
+  markMotion: { src: "/assets/motion/oushy-mark.webp", ratio: 1 },
   lockup: { src: "/assets/oushy-lockup.png", ratio: 688 / 345 },
 } as const satisfies Record<string, BrandAsset>;
+
+/**
+ * Paper-craft service icons, cropped square out of the masters in
+ * `assets-source/icons/` with their paper shifted onto the page cream and the
+ * tile edge feathered, so no rectangle shows against the background.
+ */
+export const serviceIcons = {
+  estrategia: { src: "/assets/icons/estrategia.png", ratio: 1 },
+  identidad: { src: "/assets/icons/identidad.png", ratio: 1 },
+  contenido: { src: "/assets/icons/contenido.png", ratio: 1 },
+  performance: { src: "/assets/icons/performance.png", ratio: 1 },
+} as const satisfies Record<string, BrandAsset>;
+
+export type ServiceIconName = keyof typeof serviceIcons;
 
 /**
  * Spreads into an `<Image>`: `{...sized(brand.star, 168)}`.

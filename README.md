@@ -52,7 +52,9 @@ src/
       site.ts         # metadata, contacto, navegación, anchors
       sections.ts     # todos los textos de la landing
 public/assets/        # marca, wordmark, estrella, outlines
+public/assets/motion/ # WebP animados derivados de assets-source/video/
 legacy/               # prototipo original, conservado como referencia
+assets-source/        # masters que NO se sirven (los .mp4 de las animaciones)
 ```
 
 ## Decisiones
@@ -67,8 +69,21 @@ legacy/               # prototipo original, conservado como referencia
 
 ## Feed de Instagram
 
-Las seis celdas de la sección *proyectos* se renderizan desde `feedPosts` en `src/content/sections.ts`. Cada entrada sin `src` muestra un placeholder; para publicar una imagen, dejala en `public/` y agregá la ruta:
+La sección *proyectos* es un carrusel ([Carousel.tsx](src/components/ui/Carousel.tsx))
+que lee de dos fuentes, en este orden:
+
+1. **La API de Instagram**, si existe `INSTAGRAM_ACCESS_TOKEN`. Se hace del lado
+   del servidor con revalidación horaria, así que el token nunca llega al
+   browser. Ver [docs/instagram-token.md](docs/instagram-token.md) para
+   conseguirlo.
+2. **Curación manual** — el modo actual. Poné las imágenes en `public/feed/` y
+   listalas en `feedPosts` de [src/content/sections.ts](src/content/sections.ts):
 
 ```ts
-{ id: "ig-post-1", src: "/feed/post-01.jpg", alt: "Campaña de verano" }
+{ id: "verano-25", src: "/feed/verano-25.jpg", alt: "Campaña de verano para …",
+  permalink: "https://www.instagram.com/p/XXXXXXXXX/" }
 ```
+
+Las entradas sin `src` se muestran como placeholder, así el carrusel mantiene su
+ritmo mientras se completa el set. El día que aparezca el token, la API toma el
+control sola y no hay que tocar código.
