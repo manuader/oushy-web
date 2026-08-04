@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>html,body{margin:0;background:#ffffff;height:100%;overflow:hidden}canvas{display:block;max-width:100vw;max-height:100vh;margin:0 auto}</style>
+<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js"></script>
+</head>
+<body>
+<canvas id="c" style="display:none"></canvas><img id="out" style="display:block;max-width:100vw;max-height:100vh;margin:0 auto">
+<script>
+pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js';
+let docP = pdfjsLib.getDocument('../uploads/OUSHY%20LOGO.pdf').promise;
+window.status = 'loading';
+window.renderPage = async function(n){
+  window.status = 'rendering';
+  const doc = await docP;
+  const page = await doc.getPage(n);
+  const v1 = page.getViewport({scale:1});
+  const scale = Math.min(2400/v1.width, 2400/v1.height);
+  const vp = page.getViewport({scale});
+  const c = document.getElementById('c');
+  c.width = vp.width; c.height = vp.height;
+  const ctx = c.getContext('2d');
+  ctx.fillStyle='#fff'; ctx.fillRect(0,0,c.width,c.height);
+  await page.render({canvasContext:ctx, viewport:vp}).promise;
+  document.getElementById('out').src = c.toDataURL('image/png');
+  window.status = 'done-'+n;
+  return 'done';
+};
+window.renderCrop = async function(n, x0, y0, x1, y1){
+  const doc = await docP;
+  const page = await doc.getPage(n);
+  const v1 = page.getViewport({scale:1});
+  const cw = (x1-x0)*v1.width, ch = (y1-y0)*v1.height;
+  const scale = Math.min(2500/cw, 2500/ch);
+  const vp = page.getViewport({scale, offsetX: -x0*v1.width*scale, offsetY: -y0*v1.height*scale});
+  const c = document.getElementById('c');
+  c.width = Math.round(cw*scale); c.height = Math.round(ch*scale);
+  const ctx = c.getContext('2d');
+  ctx.fillStyle='#fff'; ctx.fillRect(0,0,c.width,c.height);
+  await page.render({canvasContext:ctx, viewport:vp}).promise;
+  document.getElementById('out').src = c.toDataURL('image/png');
+  window.status = 'crop-done';
+  return 'done';
+};
+docP.then(d=>{ window.numPages=d.numPages; window.status='loaded'; });
+</script>
+</body>
+</html>

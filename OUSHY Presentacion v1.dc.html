@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Archivo:ital,wght@0,100..900;1,100..900&amp;family=Space+Mono:ital,wght@0,400;0,700;1,400&amp;family=Homemade+Apple&amp;display=swap" rel="stylesheet">
+<style>
+html, body { margin: 0; padding: 0; background: #F1ECE2; }
+body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+a { color: #171412; text-decoration: none; }
+a:hover { color: #E9521E; }
+::selection { background: #E9521E; color: #F1ECE2; }
+[data-oushy-cursor], [data-oushy-cursor] a, [data-oushy-cursor] button { cursor: none; }
+@keyframes omRise { from { transform: translateY(112%); } to { transform: translateY(0); } }
+@keyframes omFade { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes omDraw { to { stroke-dashoffset: 0; } }
+@keyframes omSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes omMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes omCue { 0% { transform: translateY(-102%); } 55% { transform: translateY(0); } 100% { transform: translateY(102%); } }
+@media (max-width: 860px) { [data-navlinks] { display: none !important; } }
+</style>
+</helmet>
+<div ref="{{ rootRef }}" style="font-family: Archivo, sans-serif; background: #F1ECE2; color: #171412; min-height: 100vh; overflow-x: clip; position: relative;">
+
+  <nav data-nav style="position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 18px clamp(20px, 4vw, 56px); border-bottom: 1px solid transparent; transition: background .4s, border-color .4s, backdrop-filter .4s;">
+    <a href="#" data-hover style="display: flex; align-items: center; gap: 10px;">
+      <svg width="21" height="21" viewBox="0 0 48 48" fill="none" style="display: block; animation: omSpin 26s linear infinite;"><g stroke="#E9521E" stroke-width="4" stroke-linecap="round"><line x1="24" y1="3" x2="24" y2="45"></line><line x1="3" y1="24" x2="45" y2="24"></line><line x1="9.2" y1="9.2" x2="38.8" y2="38.8"></line><line x1="38.8" y1="9.2" x2="9.2" y2="38.8"></line></g></svg>
+      <span style="font-family: Anton, sans-serif; font-size: 19px; letter-spacing: .05em;">OUSHY</span>
+      <span style="font-family: 'Space Mono', monospace; font-size: 9.5px; letter-spacing: .32em; color: #6F675C; margin-top: 5px;">STUDIO</span>
+    </a>
+    <div style="display: flex; align-items: center; gap: clamp(18px, 2.6vw, 40px);">
+      <div data-navlinks style="display: flex; gap: clamp(16px, 2.2vw, 30px);">
+        <a href="#estudio" data-hover style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .16em;" style-hover="color: #E9521E;">EL ESTUDIO</a>
+        <a href="#servicios" data-hover style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .16em;" style-hover="color: #E9521E;">SERVICIOS</a>
+        <a href="#proceso" data-hover style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .16em;" style-hover="color: #E9521E;">PROCESO</a>
+        <a href="#industrias" data-hover style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .16em;" style-hover="color: #E9521E;">INDUSTRIAS</a>
+      </div>
+      <a href="#contacto" data-hover style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .14em; border: 1.3px solid #171412; border-radius: 999px; padding: 10px 20px; transition: background .35s, color .35s;" style-hover="background: #171412; color: #F1ECE2;">INICIAR PROYECTO</a>
+    </div>
+  </nav>
+
+  <section data-screen-label="Hero" style="position: relative; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 130px clamp(20px, 4.5vw, 64px) 90px;">
+    <svg style="position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none;" viewBox="0 0 1440 900" preserveAspectRatio="none" fill="none">
+      <path d="M -30 640 C 380 560, 720 340, 1470 110" stroke="#E9521E" stroke-width="2" vector-effect="non-scaling-stroke" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1; animation: omDraw 1.9s cubic-bezier(.65,0,.35,1) .55s forwards;"></path>
+      <path d="M -30 726 C 420 646, 760 424, 1470 194" stroke="rgba(23,20,18,.18)" stroke-width="1.5" vector-effect="non-scaling-stroke" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1; animation: omDraw 1.9s cubic-bezier(.65,0,.35,1) .8s forwards;"></path>
+    </svg>
+    <div style="position: relative; display: flex; justify-content: space-between; gap: 20px; font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .2em; color: #6F675C; animation: omFade .9s cubic-bezier(.22,1,.36,1) .25s backwards;">
+      <span>AGENCIA CREATIVA INTEGRAL</span>
+      <span>ARG &#9656; WORKING GLOBALLY</span>
+    </div>
+    <div style="position: relative; margin-top: clamp(24px, 4vh, 48px);">
+      <div style="overflow: hidden;">
+        <h1 style="margin: 0; font-family: Anton, sans-serif; font-weight: 400; font-size: clamp(96px, 21vw, 340px); line-height: .84; letter-spacing: .004em; animation: omRise 1.15s cubic-bezier(.22,1,.36,1) .35s backwards;">OUSHY</h1>
+      </div>
+      <svg data-hero-star width="clamp(44px, 6vw, 96px)" viewBox="0 0 48 48" fill="none" style="position: absolute; top: -4%; right: 1.5%; width: clamp(44px, 6vw, 96px); height: auto; animation: omSpin 34s linear 2.4s infinite; transform-origin: 50% 50%;"><g stroke="#E9521E" stroke-width="3.4" stroke-linecap="round"><line x1="24" y1="2.5" x2="24" y2="45.5" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1; animation: omDraw .9s cubic-bezier(.65,0,.35,1) .95s forwards;"></line><line x1="2.5" y1="24" x2="45.5" y2="24" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1; animation: omDraw .9s cubic-bezier(.65,0,.35,1) 1.1s forwards;"></line><line x1="8.8" y1="8.8" x2="39.2" y2="39.2" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1; animation: omDraw .9s cubic-bezier(.65,0,.35,1) 1.25s forwards;"></line><line x1="39.2" y1="8.8" x2="8.8" y2="39.2" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1; animation: omDraw .9s cubic-bezier(.65,0,.35,1) 1.4s forwards;"></line></g></svg>
+      <span style="position: absolute; right: 3.5%; bottom: -9%; z-index: 2; font-family: 'Homemade Apple', cursive; font-size: clamp(28px, 4.4vw, 68px); color: #E9521E; transform: rotate(-5deg); white-space: nowrap; animation: omFade 1s cubic-bezier(.22,1,.36,1) 1.25s backwards;">studio</span>
+    </div>
+    <div style="position: relative; margin-top: clamp(48px, 8vh, 84px); display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 36px; align-items: end;">
+      <div>
+        <p style="margin: 0; max-width: 540px; font-size: clamp(19px, 1.75vw, 25px); font-weight: 500; line-height: 1.45; letter-spacing: -.01em; text-wrap: pretty; animation: omFade .9s cubic-bezier(.22,1,.36,1) .95s backwards;">Creamos, producimos y potenciamos tu marca <svg width="16" height="16" viewBox="0 0 24 24" style="display: inline-block; vertical-align: -1px;"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg></p>
+        <p style="margin: 18px 0 0; font-family: 'Space Mono', monospace; font-size: 11.5px; letter-spacing: .16em; color: #6F675C; animation: omFade .9s cubic-bezier(.22,1,.36,1) 1.1s backwards;">MARKETING DIGITAL &middot; ESTRATEGIA &amp; META ADS &middot; BRANDING &middot; CONTENIDO</p>
+      </div>
+      <div style="display: flex; gap: 14px; flex-wrap: wrap; justify-content: flex-end; animation: omFade .9s cubic-bezier(.22,1,.36,1) 1.25s backwards;">
+        <a href="#contacto" data-hover style="font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: .14em; background: #E9521E; color: #F1ECE2; border-radius: 999px; padding: 18px 32px; transition: background .35s, transform .35s;" style-hover="background: #C8430F; color: #F1ECE2; transform: translateY(-2px);">INICIAR PROYECTO &#8599;</a>
+        <a href="#servicios" data-hover style="font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: .14em; border: 1.4px solid #171412; border-radius: 999px; padding: 18px 32px; transition: background .35s, color .35s, transform .35s;" style-hover="background: #171412; color: #F1ECE2; transform: translateY(-2px);">VER SERVICIOS</a>
+      </div>
+    </div>
+    <div style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 9px; animation: omFade 1s ease 2.2s backwards;">
+      <span style="font-family: 'Space Mono', monospace; font-size: 9.5px; letter-spacing: .34em; color: #6F675C;">SCROLL</span>
+      <div style="width: 2px; height: 42px; overflow: hidden; border-radius: 2px;">
+        <div style="width: 2px; height: 100%; background: #E9521E; animation: omCue 2.3s cubic-bezier(.65,0,.35,1) 3s infinite;"></div>
+      </div>
+    </div>
+  </section>
+
+  <div style="border-top: 1px solid rgba(23,20,18,.14); border-bottom: 1px solid rgba(23,20,18,.14); padding: 16px 0; overflow: hidden; display: flex;">
+    <div data-marquee-track style="flex: none; display: inline-flex; align-items: center; width: max-content; animation: omMarquee 26s linear infinite; will-change: transform;">
+      <div style="display: inline-flex; align-items: center; gap: 34px; padding-right: 34px;">
+        <span style="font-family: Anton, sans-serif; font-size: 23px; letter-spacing: .05em; white-space: nowrap;">BRANDING</span><svg width="15" height="15" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg>
+        <span style="font-family: Anton, sans-serif; font-size: 23px; letter-spacing: .05em; white-space: nowrap;">IDENTIDAD VISUAL</span><svg width="15" height="15" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg>
+        <span style="font-family: Anton, sans-serif; font-size: 23px; letter-spacing: .05em; white-space: nowrap;">REDES SOCIALES</span><svg width="15" height="15" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg>
+        <span style="font-family: Anton, sans-serif; font-size: 23px; letter-spacing: .05em; white-space: nowrap;">CONTENIDO UGC</span><svg width="15" height="15" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg>
+        <span style="font-family: Anton, sans-serif; font-size: 23px; letter-spacing: .05em; white-space: nowrap;">META ADS</span><svg width="15" height="15" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg>
+        <span style="font-family: Anton, sans-serif; font-size: 23px; letter-spacing: .05em; white-space: nowrap;">DIRECCI&Oacute;N CREATIVA</span><svg width="15" height="15" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg>
+        <span style="font-family: Anton, sans-serif; font-size: 23px; letter-spacing: .05em; white-space: nowrap;">ESTRATEGIA</span><svg width="15" height="15" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg>
+        <span style="font-family: Anton, sans-serif; font-size: 23px; letter-spacing: .05em; white-space: nowrap;">PRODUCCI&Oacute;N AUDIOVISUAL</span><svg width="15" height="15" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg>
+      </div>
+      <div style="display: inline-flex; align-items: center; gap: 34px; padding-right: 34px;">
+        <span style="font-family: Anton, sans-serif; font-size: 23px; letter-spacing: .05em; white-space: nowrap;">BRANDING</span><svg width="15" height="15" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg>
+        <span style="font-family: Anton, sans-serif; font-size: 23px; letter-spacing: .05em; white-space: nowrap;">IDENTIDAD VISUAL</span><svg width="15" height="15" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg>
+        <span style="font-family: Anton, sans-serif; font-size: 23px; letter-spacing: .05em; white-space: nowrap;">REDES SOCIALES</span><svg width="15" height="15" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg>
+        <span style="font-family: Anton, sans-serif; font-size: 23px; letter-spacing: .05em; white-space: nowrap;">CONTENIDO UGC</span><svg width="15" height="15" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg>
+        <span style="font-family: Anton, sans-serif; font-size: 23px; letter-spacing: .05em; white-space: nowrap;">META ADS</span><svg width="15" height="15" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg>
+        <span style="font-family: Anton, sans-serif; font-size: 23px; letter-spacing: .05em; white-space: nowrap;">DIRECCI&Oacute;N CREATIVA</span><svg width="15" height="15" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg>
+        <span style="font-family: Anton, sans-serif; font-size: 23px; letter-spacing: .05em; white-space: nowrap;">ESTRATEGIA</span><svg width="15" height="15" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg>
+        <span style="font-family: Anton, sans-serif; font-size: 23px; letter-spacing: .05em; white-space: nowrap;">PRODUCCI&Oacute;N AUDIOVISUAL</span><svg width="15" height="15" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg>
+      </div>
+    </div>
+  </div>
+
+  <section id="estudio" data-screen-label="El estudio" style="padding: clamp(90px, 14vh, 150px) clamp(20px, 4.5vw, 64px) clamp(80px, 12vh, 130px); max-width: 1280px; margin: 0 auto; box-sizing: border-box;">
+    <div data-reveal style="display: flex; align-items: center; gap: 10px;">
+      <svg width="12" height="12" viewBox="0 0 24 24"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg>
+      <span style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .22em; color: rgba(23,20,18,.55);">01 &middot; EL ESTUDIO</span>
+    </div>
+    <p data-words style="margin: 36px 0 0; max-width: 1080px; font-size: clamp(27px, 3.7vw, 58px); font-weight: 620; line-height: 1.16; letter-spacing: -.018em; text-wrap: pretty;">OUSHY Studio es una agencia de marketing y branding especializada en construir marcas con identidad, estrategia y una comunicaci&oacute;n que genera resultados.</p>
+    <div data-reveal data-delay=".15" style="margin-top: 30px; display: inline-block; position: relative;">
+      <span style="font-family: 'Homemade Apple', cursive; font-size: clamp(17px, 1.8vw, 24px); color: #E9521E; display: inline-block; transform: rotate(-2.5deg);">no existen las f&oacute;rmulas universales</span>
+      <svg data-draw data-drawdur="1.1" width="100%" height="12" viewBox="0 0 200 12" preserveAspectRatio="none" fill="none" style="position: absolute; left: 0; bottom: -12px; width: 100%;"><path d="M2 8 C 34 2, 68 11, 102 6 S 168 3, 198 7" stroke="#E9521E" stroke-width="2" stroke-linecap="round" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1;"></path></svg>
+    </div>
+    <div style="margin-top: clamp(48px, 7vh, 76px); display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 44px clamp(32px, 4vw, 72px);">
+      <p data-reveal data-delay=".05" style="margin: 0; max-width: 560px; font-size: 16.5px; line-height: 1.78; color: #575046;">Trabajamos de manera integral, acompa&ntilde;ando a cada cliente desde la estrategia hasta la ejecuci&oacute;n. Creemos que no existen las f&oacute;rmulas universales: cada marca tiene objetivos, desaf&iacute;os y necesidades diferentes. Por eso desarrollamos planes de trabajo personalizados, donde cada decisi&oacute;n responde a una estrategia clara y medible.</p>
+      <p data-reveal data-delay=".15" style="margin: 0; max-width: 560px; font-size: 16.5px; line-height: 1.78; color: #575046;">Nuestro equipo re&uacute;ne profesionales de distintas &aacute;reas para ofrecer un servicio completo, permitiendo que nuestros clientes deleguen toda su comunicaci&oacute;n en un solo lugar.</p>
+    </div>
+  </section>
+
+  <section id="servicios" data-screen-label="Servicios" style="border-top: 1px solid rgba(23,20,18,.14); padding: clamp(80px, 12vh, 130px) clamp(20px, 4.5vw, 64px) clamp(90px, 13vh, 140px);">
+    <div style="max-width: 1280px; margin: 0 auto;">
+      <div data-reveal style="display: flex; align-items: center; gap: 10px;">
+        <svg width="12" height="12" viewBox="0 0 24 24"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg>
+        <span style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .22em; color: rgba(23,20,18,.55);">02 &middot; SERVICIOS</span>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px 40px; margin-top: 30px;">
+        <h2 data-reveal style="margin: 0; font-family: Anton, sans-serif; font-weight: 400; font-size: clamp(52px, 8vw, 128px); line-height: .9; letter-spacing: .004em;">SERVICIOS</h2>
+        <div data-reveal data-delay=".15" style="position: relative; padding: 14px 26px;">
+          <span style="font-family: 'Homemade Apple', cursive; font-size: clamp(16px, 1.7vw, 22px); color: #E9521E; display: inline-block; transform: rotate(-3deg); white-space: nowrap;">todo en un mismo lugar</span>
+          <svg data-draw data-drawdur="1.4" viewBox="0 0 260 70" preserveAspectRatio="none" fill="none" style="position: absolute; inset: 0; width: 100%; height: 100%;"><ellipse cx="130" cy="35" rx="126" ry="31" stroke="#E9521E" stroke-width="1.6" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1;" transform="rotate(-2 130 35)"></ellipse></svg>
+        </div>
+      </div>
+      <div style="margin-top: clamp(44px, 7vh, 70px);">
+        <div data-hover style="position: relative; display: grid; grid-template-columns: clamp(44px, 5vw, 80px) 1.05fr 1fr clamp(64px, 8vw, 104px); gap: clamp(18px, 3vw, 44px); align-items: start; padding: 44px 0; border-top: 1px solid rgba(23,20,18,.14); transition: transform .5s cubic-bezier(.22,1,.36,1);" style-hover="transform: translateX(10px);">
+          <span style="font-family: 'Space Mono', monospace; font-size: 13px; color: #E9521E;">(01)</span>
+          <h3 data-reveal style="margin: 0; font-family: Anton, sans-serif; font-weight: 400; font-size: clamp(30px, 3.6vw, 54px); line-height: .95; letter-spacing: .01em;">ESTRATEGIA</h3>
+          <div data-reveal data-delay=".1" style="display: flex; flex-direction: column; gap: 12px;">
+            <div style="display: flex; gap: 10px; align-items: flex-start;"><svg width="10" height="10" viewBox="0 0 24 24" style="flex: none; margin-top: 6px;"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg><span style="font-size: 15.5px; line-height: 1.5; color: #443E36;">Estrategia de marca y posicionamiento</span></div>
+            <div style="display: flex; gap: 10px; align-items: flex-start;"><svg width="10" height="10" viewBox="0 0 24 24" style="flex: none; margin-top: 6px;"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg><span style="font-size: 15.5px; line-height: 1.5; color: #443E36;">Consultor&iacute;a y acompa&ntilde;amiento estrat&eacute;gico</span></div>
+            <div style="display: flex; gap: 10px; align-items: flex-start;"><svg width="10" height="10" viewBox="0 0 24 24" style="flex: none; margin-top: 6px;"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg><span style="font-size: 15.5px; line-height: 1.5; color: #443E36;">Planificaci&oacute;n y calendarizaci&oacute;n de contenido</span></div>
+          </div>
+          <svg data-draw data-drawdur="1.2" viewBox="0 0 48 48" fill="none" style="width: 100%; max-width: 92px; justify-self: end;"><g stroke="#171412" stroke-width="2" stroke-linecap="round"><circle cx="24" cy="24" r="16.5" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1;"></circle><circle cx="24" cy="24" r="7" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1;"></circle><line x1="24" y1="2.5" x2="24" y2="7.5" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1;"></line><line x1="24" y1="40.5" x2="24" y2="45.5" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1;"></line><line x1="2.5" y1="24" x2="7.5" y2="24" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1;"></line><line x1="40.5" y1="24" x2="45.5" y2="24" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1;"></line><circle cx="24" cy="24" r="1.6" fill="#E9521E" stroke="none"></circle></g></svg>
+        </div>
+        <div data-hover style="position: relative; display: grid; grid-template-columns: clamp(44px, 5vw, 80px) 1.05fr 1fr clamp(64px, 8vw, 104px); gap: clamp(18px, 3vw, 44px); align-items: start; padding: 44px 0; border-top: 1px solid rgba(23,20,18,.14); transition: transform .5s cubic-bezier(.22,1,.36,1);" style-hover="transform: translateX(10px);">
+          <span style="font-family: 'Space Mono', monospace; font-size: 13px; color: #E9521E;">(02)</span>
+          <h3 data-reveal style="margin: 0; font-family: Anton, sans-serif; font-weight: 400; font-size: clamp(30px, 3.6vw, 54px); line-height: .95; letter-spacing: .01em;">IDENTIDAD</h3>
+          <div data-reveal data-delay=".1" style="display: flex; flex-direction: column; gap: 12px;">
+            <div style="display: flex; gap: 10px; align-items: flex-start;"><svg width="10" height="10" viewBox="0 0 24 24" style="flex: none; margin-top: 6px;"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg><span style="font-size: 15.5px; line-height: 1.5; color: #443E36;">Branding e identidad visual</span></div>
+            <div style="display: flex; gap: 10px; align-items: flex-start;"><svg width="10" height="10" viewBox="0 0 24 24" style="flex: none; margin-top: 6px;"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg><span style="font-size: 15.5px; line-height: 1.5; color: #443E36;">Direcci&oacute;n creativa</span></div>
+            <div style="display: flex; gap: 10px; align-items: flex-start;"><svg width="10" height="10" viewBox="0 0 24 24" style="flex: none; margin-top: 6px;"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg><span style="font-size: 15.5px; line-height: 1.5; color: #443E36;">Dise&ntilde;o gr&aacute;fico</span></div>
+            <div style="display: flex; gap: 10px; align-items: flex-start;"><svg width="10" height="10" viewBox="0 0 24 24" style="flex: none; margin-top: 6px;"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg><span style="font-size: 15.5px; line-height: 1.5; color: #443E36;">Desarrollo de piezas para medios digitales e impresos</span></div>
+          </div>
+          <svg data-draw data-drawdur="1.2" viewBox="0 0 48 48" fill="none" style="width: 100%; max-width: 92px; justify-self: end;"><g stroke="#171412" stroke-width="2" stroke-linecap="round"><rect x="5" y="5" width="38" height="38" rx="10" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1;"></rect><path d="M16 15v9c0 4.4 3.6 8 8 8s8-3.6 8-8v-9" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1;"></path></g></svg>
+        </div>
+        <div data-hover style="position: relative; display: grid; grid-template-columns: clamp(44px, 5vw, 80px) 1.05fr 1fr clamp(64px, 8vw, 104px); gap: clamp(18px, 3vw, 44px); align-items: start; padding: 44px 0; border-top: 1px solid rgba(23,20,18,.14); transition: transform .5s cubic-bezier(.22,1,.36,1);" style-hover="transform: translateX(10px);">
+          <span style="font-family: 'Space Mono', monospace; font-size: 13px; color: #E9521E;">(03)</span>
+          <h3 data-reveal style="margin: 0; font-family: Anton, sans-serif; font-weight: 400; font-size: clamp(30px, 3.6vw, 54px); line-height: .95; letter-spacing: .01em;">CONTENIDO</h3>
+          <div data-reveal data-delay=".1" style="display: flex; flex-direction: column; gap: 12px;">
+            <div style="display: flex; gap: 10px; align-items: flex-start;"><svg width="10" height="10" viewBox="0 0 24 24" style="flex: none; margin-top: 6px;"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg><span style="font-size: 15.5px; line-height: 1.5; color: #443E36;">Gesti&oacute;n integral de redes sociales</span></div>
+            <div style="display: flex; gap: 10px; align-items: flex-start;"><svg width="10" height="10" viewBox="0 0 24 24" style="flex: none; margin-top: 6px;"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg><span style="font-size: 15.5px; line-height: 1.5; color: #443E36;">Producci&oacute;n y edici&oacute;n de contenido audiovisual</span></div>
+            <div style="display: flex; gap: 10px; align-items: flex-start;"><svg width="10" height="10" viewBox="0 0 24 24" style="flex: none; margin-top: 6px;"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg><span style="font-size: 15.5px; line-height: 1.5; color: #443E36;">Reels, fotograf&iacute;a y contenido UGC</span></div>
+            <div style="display: flex; gap: 10px; align-items: flex-start;"><svg width="10" height="10" viewBox="0 0 24 24" style="flex: none; margin-top: 6px;"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg><span style="font-size: 15.5px; line-height: 1.5; color: #443E36;">Redacci&oacute;n de copies</span></div>
+          </div>
+          <svg data-draw data-drawdur="1.2" viewBox="0 0 48 48" fill="none" style="width: 100%; max-width: 92px; justify-self: end;"><g stroke="#171412" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="9" width="38" height="30" rx="8" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1;"></rect><path d="M21 18l9 6-9 6z" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1;"></path></g></svg>
+        </div>
+        <div data-hover style="position: relative; display: grid; grid-template-columns: clamp(44px, 5vw, 80px) 1.05fr 1fr clamp(64px, 8vw, 104px); gap: clamp(18px, 3vw, 44px); align-items: start; padding: 44px 0; border-top: 1px solid rgba(23,20,18,.14); border-bottom: 1px solid rgba(23,20,18,.14); transition: transform .5s cubic-bezier(.22,1,.36,1);" style-hover="transform: translateX(10px);">
+          <span style="font-family: 'Space Mono', monospace; font-size: 13px; color: #E9521E;">(04)</span>
+          <h3 data-reveal style="margin: 0; font-family: Anton, sans-serif; font-weight: 400; font-size: clamp(30px, 3.6vw, 54px); line-height: .95; letter-spacing: .01em;">PERFORMANCE</h3>
+          <div data-reveal data-delay=".1" style="display: flex; flex-direction: column; gap: 12px;">
+            <div style="display: flex; gap: 10px; align-items: flex-start;"><svg width="10" height="10" viewBox="0 0 24 24" style="flex: none; margin-top: 6px;"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg><span style="font-size: 15.5px; line-height: 1.5; color: #443E36;">Publicidad en Meta Ads</span></div>
+            <div style="display: flex; gap: 10px; align-items: flex-start;"><svg width="10" height="10" viewBox="0 0 24 24" style="flex: none; margin-top: 6px;"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg><span style="font-size: 15.5px; line-height: 1.5; color: #443E36;">Lanzamientos y campa&ntilde;as</span></div>
+          </div>
+          <svg data-draw data-drawdur="1.2" viewBox="0 0 48 48" fill="none" style="width: 100%; max-width: 92px; justify-self: end;"><g stroke="#171412" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 40L18 26l8 7L40 14" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1;"></path><path d="M31 13h10v10" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1;"></path><line x1="5" y1="45" x2="43" y2="45" opacity=".3" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1;"></line></g></svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="proceso" data-screen-label="Proceso" style="border-top: 1px solid rgba(23,20,18,.14); padding: clamp(80px, 12vh, 130px) clamp(20px, 4.5vw, 64px) clamp(90px, 13vh, 140px);">
+    <div style="max-width: 1280px; margin: 0 auto;">
+      <div data-reveal style="display: flex; align-items: center; gap: 10px;">
+        <svg width="12" height="12" viewBox="0 0 24 24"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg>
+        <span style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .22em; color: rgba(23,20,18,.55);">03 &middot; C&Oacute;MO TRABAJAMOS</span>
+      </div>
+      <h2 data-reveal style="margin: 30px 0 0; max-width: 980px; font-family: Anton, sans-serif; font-weight: 400; font-size: clamp(40px, 5.8vw, 92px); line-height: .94; letter-spacing: .004em;">DE LA ESTRATEGIA<br>A LA EJECUCI&Oacute;N</h2>
+      <div data-process style="position: relative; margin-top: clamp(56px, 9vh, 96px);">
+        <svg style="position: absolute; top: 0; left: 0; width: 100%; height: 150px; pointer-events: none;" viewBox="0 0 1000 150" preserveAspectRatio="none" fill="none">
+          <path data-process-path d="M -12 118 C 40 118, 70 52, 125 56 C 180 60, 200 108, 260 106 C 320 104, 330 48, 375 50 C 425 52, 450 112, 510 108 C 570 104, 585 44, 625 48 C 680 53, 700 116, 760 110 C 815 105, 830 55, 875 56 C 930 57, 950 96, 1012 84" stroke="#E9521E" stroke-width="2" vector-effect="non-scaling-stroke" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1;"></path>
+        </svg>
+        <svg data-process-star width="26" height="26" viewBox="0 0 24 24" style="position: absolute; right: -6px; top: 62px; opacity: 0; transform: scale(.4) rotate(-90deg); transition: opacity .5s ease, transform .7s cubic-bezier(.22,1,.36,1);"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0 20px;">
+          <div style="text-align: center;">
+            <div style="height: 150px; display: flex; align-items: center; justify-content: center;"><div data-process-node style="width: 58px; height: 58px; border: 1.6px solid #171412; border-radius: 50%; background: #F1ECE2; display: flex; align-items: center; justify-content: center; font-family: Anton, sans-serif; font-size: 17px;">01</div></div>
+            <div style="font-family: Anton, sans-serif; font-size: clamp(20px, 1.9vw, 26px); letter-spacing: .03em; margin-top: 18px;">PLANIFICAR</div>
+            <div style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .12em; color: #6F675C; margin-top: 9px;">ESTRATEGIA Y CALENDARIO</div>
+          </div>
+          <div style="text-align: center;">
+            <div style="height: 150px; display: flex; align-items: center; justify-content: center;"><div data-process-node style="width: 58px; height: 58px; border: 1.6px solid #171412; border-radius: 50%; background: #F1ECE2; display: flex; align-items: center; justify-content: center; font-family: Anton, sans-serif; font-size: 17px;">02</div></div>
+            <div style="font-family: Anton, sans-serif; font-size: clamp(20px, 1.9vw, 26px); letter-spacing: .03em; margin-top: 18px;">CREAR</div>
+            <div style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .12em; color: #6F675C; margin-top: 9px;">DISE&Ntilde;O Y PRODUCCI&Oacute;N</div>
+          </div>
+          <div style="text-align: center;">
+            <div style="height: 150px; display: flex; align-items: center; justify-content: center;"><div data-process-node style="width: 58px; height: 58px; border: 1.6px solid #171412; border-radius: 50%; background: #F1ECE2; display: flex; align-items: center; justify-content: center; font-family: Anton, sans-serif; font-size: 17px;">03</div></div>
+            <div style="font-family: Anton, sans-serif; font-size: clamp(20px, 1.9vw, 26px); letter-spacing: .03em; margin-top: 18px;">EJECUTAR</div>
+            <div style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .12em; color: #6F675C; margin-top: 9px;">PUBLICACI&Oacute;N Y CAMPA&Ntilde;AS</div>
+          </div>
+          <div style="text-align: center;">
+            <div style="height: 150px; display: flex; align-items: center; justify-content: center;"><div data-process-node style="width: 58px; height: 58px; border: 1.6px solid #171412; border-radius: 50%; background: #F1ECE2; display: flex; align-items: center; justify-content: center; font-family: Anton, sans-serif; font-size: 17px;">04</div></div>
+            <div style="font-family: Anton, sans-serif; font-size: clamp(20px, 1.9vw, 26px); letter-spacing: .03em; margin-top: 18px;">OPTIMIZAR</div>
+            <div style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .12em; color: #6F675C; margin-top: 9px;">AN&Aacute;LISIS Y MEJORA</div>
+          </div>
+        </div>
+      </div>
+      <p data-reveal style="margin: clamp(48px, 8vh, 80px) 0 0; max-width: 620px; font-size: 17px; line-height: 1.75; color: #575046;">Nos ocupamos de planificar, crear, ejecutar y optimizar cada acci&oacute;n para que la marca mantenga una presencia consistente y de alto nivel.</p>
+    </div>
+  </section>
+
+  <section id="industrias" data-screen-label="Industrias" style="border-top: 1px solid rgba(23,20,18,.14); padding: clamp(80px, 12vh, 130px) 0 clamp(80px, 12vh, 120px);">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 0 clamp(20px, 4.5vw, 64px); box-sizing: border-box;">
+      <div data-reveal style="display: flex; align-items: center; gap: 10px;">
+        <svg width="12" height="12" viewBox="0 0 24 24"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg>
+        <span style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .22em; color: rgba(23,20,18,.55);">04 &middot; INDUSTRIAS</span>
+      </div>
+      <p data-reveal style="margin: 30px 0 0; max-width: 640px; font-size: clamp(18px, 1.7vw, 22px); font-weight: 500; line-height: 1.55; letter-spacing: -.005em; text-wrap: pretty;">A lo largo de nuestra trayectoria trabajamos con empresas de diferentes industrias, tanto en Argentina como en el exterior.</p>
+    </div>
+    <div style="margin-top: clamp(44px, 7vh, 70px); border-top: 1px solid rgba(23,20,18,.14); border-bottom: 1px solid rgba(23,20,18,.14); padding: 30px 0 26px; overflow: hidden; display: flex;">
+      <div data-marquee-track data-mfactor="1.5" style="flex: none; display: inline-flex; align-items: center; width: max-content; animation: omMarquee 39s linear infinite; will-change: transform;">
+        <div style="display: inline-flex; align-items: center; gap: 44px; padding-right: 44px;">
+          <span data-hover style="font-family: Anton, sans-serif; font-size: clamp(44px, 7vw, 104px); line-height: 1; white-space: nowrap; color: transparent; -webkit-text-stroke: 1.3px rgba(23,20,18,.8); transition: color .35s, -webkit-text-stroke .35s;" style-hover="color: #E9521E; -webkit-text-stroke: 1.3px #E9521E;">CONSUMO MASIVO</span><svg width="26" height="26" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg>
+          <span data-hover style="font-family: Anton, sans-serif; font-size: clamp(44px, 7vw, 104px); line-height: 1; white-space: nowrap; color: transparent; -webkit-text-stroke: 1.3px rgba(23,20,18,.8); transition: color .35s, -webkit-text-stroke .35s;" style-hover="color: #E9521E; -webkit-text-stroke: 1.3px #E9521E;">BIENESTAR</span><svg width="26" height="26" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg>
+          <span data-hover style="font-family: Anton, sans-serif; font-size: clamp(44px, 7vw, 104px); line-height: 1; white-space: nowrap; color: transparent; -webkit-text-stroke: 1.3px rgba(23,20,18,.8); transition: color .35s, -webkit-text-stroke .35s;" style-hover="color: #E9521E; -webkit-text-stroke: 1.3px #E9521E;">SALUD</span><svg width="26" height="26" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg>
+          <span data-hover style="font-family: Anton, sans-serif; font-size: clamp(44px, 7vw, 104px); line-height: 1; white-space: nowrap; color: transparent; -webkit-text-stroke: 1.3px rgba(23,20,18,.8); transition: color .35s, -webkit-text-stroke .35s;" style-hover="color: #E9521E; -webkit-text-stroke: 1.3px #E9521E;">BELLEZA</span><svg width="26" height="26" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg>
+          <span data-hover style="font-family: Anton, sans-serif; font-size: clamp(44px, 7vw, 104px); line-height: 1; white-space: nowrap; color: transparent; -webkit-text-stroke: 1.3px rgba(23,20,18,.8); transition: color .35s, -webkit-text-stroke .35s;" style-hover="color: #E9521E; -webkit-text-stroke: 1.3px #E9521E;">GASTRONOM&Iacute;A</span><svg width="26" height="26" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg>
+        </div>
+        <div style="display: inline-flex; align-items: center; gap: 44px; padding-right: 44px;">
+          <span data-hover style="font-family: Anton, sans-serif; font-size: clamp(44px, 7vw, 104px); line-height: 1; white-space: nowrap; color: transparent; -webkit-text-stroke: 1.3px rgba(23,20,18,.8); transition: color .35s, -webkit-text-stroke .35s;" style-hover="color: #E9521E; -webkit-text-stroke: 1.3px #E9521E;">CONSUMO MASIVO</span><svg width="26" height="26" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg>
+          <span data-hover style="font-family: Anton, sans-serif; font-size: clamp(44px, 7vw, 104px); line-height: 1; white-space: nowrap; color: transparent; -webkit-text-stroke: 1.3px rgba(23,20,18,.8); transition: color .35s, -webkit-text-stroke .35s;" style-hover="color: #E9521E; -webkit-text-stroke: 1.3px #E9521E;">BIENESTAR</span><svg width="26" height="26" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg>
+          <span data-hover style="font-family: Anton, sans-serif; font-size: clamp(44px, 7vw, 104px); line-height: 1; white-space: nowrap; color: transparent; -webkit-text-stroke: 1.3px rgba(23,20,18,.8); transition: color .35s, -webkit-text-stroke .35s;" style-hover="color: #E9521E; -webkit-text-stroke: 1.3px #E9521E;">SALUD</span><svg width="26" height="26" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg>
+          <span data-hover style="font-family: Anton, sans-serif; font-size: clamp(44px, 7vw, 104px); line-height: 1; white-space: nowrap; color: transparent; -webkit-text-stroke: 1.3px rgba(23,20,18,.8); transition: color .35s, -webkit-text-stroke .35s;" style-hover="color: #E9521E; -webkit-text-stroke: 1.3px #E9521E;">BELLEZA</span><svg width="26" height="26" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg>
+          <span data-hover style="font-family: Anton, sans-serif; font-size: clamp(44px, 7vw, 104px); line-height: 1; white-space: nowrap; color: transparent; -webkit-text-stroke: 1.3px rgba(23,20,18,.8); transition: color .35s, -webkit-text-stroke .35s;" style-hover="color: #E9521E; -webkit-text-stroke: 1.3px #E9521E;">GASTRONOM&Iacute;A</span><svg width="26" height="26" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg>
+        </div>
+      </div>
+    </div>
+    <div style="border-bottom: 1px solid rgba(23,20,18,.14); padding: 26px 0 30px; overflow: hidden; display: flex;">
+      <div data-marquee-track data-mfactor="1.9" style="flex: none; display: inline-flex; align-items: center; width: max-content; animation: omMarquee 49s linear infinite; animation-direction: reverse; will-change: transform;">
+        <div style="display: inline-flex; align-items: center; gap: 44px; padding-right: 44px;">
+          <span data-hover style="font-family: Anton, sans-serif; font-size: clamp(44px, 7vw, 104px); line-height: 1; white-space: nowrap; color: transparent; -webkit-text-stroke: 1.3px rgba(23,20,18,.8); transition: color .35s, -webkit-text-stroke .35s;" style-hover="color: #E9521E; -webkit-text-stroke: 1.3px #E9521E;">AVIACI&Oacute;N PRIVADA</span><svg width="26" height="26" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg>
+          <span data-hover style="font-family: Anton, sans-serif; font-size: clamp(44px, 7vw, 104px); line-height: 1; white-space: nowrap; color: transparent; -webkit-text-stroke: 1.3px rgba(23,20,18,.8); transition: color .35s, -webkit-text-stroke .35s;" style-hover="color: #E9521E; -webkit-text-stroke: 1.3px #E9521E;">DEPORTE DE ALTO RENDIMIENTO</span><svg width="26" height="26" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg>
+          <span data-hover style="font-family: Anton, sans-serif; font-size: clamp(44px, 7vw, 104px); line-height: 1; white-space: nowrap; color: transparent; -webkit-text-stroke: 1.3px rgba(23,20,18,.8); transition: color .35s, -webkit-text-stroke .35s;" style-hover="color: #E9521E; -webkit-text-stroke: 1.3px #E9521E;">TECNOLOG&Iacute;A</span><svg width="26" height="26" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg>
+          <span data-hover style="font-family: Anton, sans-serif; font-size: clamp(44px, 7vw, 104px); line-height: 1; white-space: nowrap; color: transparent; -webkit-text-stroke: 1.3px rgba(23,20,18,.8); transition: color .35s, -webkit-text-stroke .35s;" style-hover="color: #E9521E; -webkit-text-stroke: 1.3px #E9521E;">RETAIL</span><svg width="26" height="26" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg>
+        </div>
+        <div style="display: inline-flex; align-items: center; gap: 44px; padding-right: 44px;">
+          <span data-hover style="font-family: Anton, sans-serif; font-size: clamp(44px, 7vw, 104px); line-height: 1; white-space: nowrap; color: transparent; -webkit-text-stroke: 1.3px rgba(23,20,18,.8); transition: color .35s, -webkit-text-stroke .35s;" style-hover="color: #E9521E; -webkit-text-stroke: 1.3px #E9521E;">AVIACI&Oacute;N PRIVADA</span><svg width="26" height="26" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg>
+          <span data-hover style="font-family: Anton, sans-serif; font-size: clamp(44px, 7vw, 104px); line-height: 1; white-space: nowrap; color: transparent; -webkit-text-stroke: 1.3px rgba(23,20,18,.8); transition: color .35s, -webkit-text-stroke .35s;" style-hover="color: #E9521E; -webkit-text-stroke: 1.3px #E9521E;">DEPORTE DE ALTO RENDIMIENTO</span><svg width="26" height="26" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg>
+          <span data-hover style="font-family: Anton, sans-serif; font-size: clamp(44px, 7vw, 104px); line-height: 1; white-space: nowrap; color: transparent; -webkit-text-stroke: 1.3px rgba(23,20,18,.8); transition: color .35s, -webkit-text-stroke .35s;" style-hover="color: #E9521E; -webkit-text-stroke: 1.3px #E9521E;">TECNOLOG&Iacute;A</span><svg width="26" height="26" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg>
+          <span data-hover style="font-family: Anton, sans-serif; font-size: clamp(44px, 7vw, 104px); line-height: 1; white-space: nowrap; color: transparent; -webkit-text-stroke: 1.3px rgba(23,20,18,.8); transition: color .35s, -webkit-text-stroke .35s;" style-hover="color: #E9521E; -webkit-text-stroke: 1.3px #E9521E;">RETAIL</span><svg width="26" height="26" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg>
+        </div>
+      </div>
+    </div>
+    <div style="max-width: 1280px; margin: 0 auto; padding: 0 clamp(20px, 4.5vw, 64px); box-sizing: border-box;">
+      <p data-reveal style="margin: clamp(40px, 6vh, 56px) 0 0; max-width: 560px; font-size: 16.5px; line-height: 1.75; color: #575046;">Esta diversidad nos permiti&oacute; adquirir una visi&oacute;n estrat&eacute;gica adaptable a distintos mercados y p&uacute;blicos.</p>
+    </div>
+  </section>
+
+  <section data-screen-label="Manifiesto" style="background: #14110F; color: #F1ECE2; position: relative; overflow: hidden; padding: clamp(100px, 16vh, 170px) clamp(20px, 4.5vw, 64px);">
+    <div data-plx="-0.06" style="position: absolute; right: 4%; top: 10%; will-change: transform;">
+      <svg data-draw data-drawdur="1.6" width="clamp(100px, 14vw, 180px)" viewBox="0 0 48 48" fill="none" style="display: block; width: clamp(100px, 14vw, 180px); height: auto; animation: omSpin 46s linear infinite; transform-origin: 50% 50%;"><g stroke="#E9521E" stroke-width="2.6" stroke-linecap="round"><line x1="24" y1="2.5" x2="24" y2="45.5" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1;"></line><line x1="2.5" y1="24" x2="45.5" y2="24" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1;"></line><line x1="8.8" y1="8.8" x2="39.2" y2="39.2" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1;"></line><line x1="39.2" y1="8.8" x2="8.8" y2="39.2" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1;"></line></g></svg>
+    </div>
+    <div style="max-width: 1280px; margin: 0 auto; position: relative;">
+      <div data-reveal style="display: flex; align-items: center; gap: 10px;">
+        <svg width="12" height="12" viewBox="0 0 24 24"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg>
+        <span style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .22em; color: rgba(241,236,226,.5);">MANIFIESTO</span>
+      </div>
+      <p data-words style="margin: 40px 0 0; max-width: 1000px; font-size: clamp(28px, 4.1vw, 62px); font-weight: 620; line-height: 1.14; letter-spacing: -.018em; text-wrap: pretty;">M&aacute;s que generar contenido, buscamos construir marcas s&oacute;lidas, coherentes y memorables.</p>
+      <svg data-draw data-drawdur="1.4" width="100%" height="2" viewBox="0 0 100 2" preserveAspectRatio="none" fill="none" style="display: block; margin-top: clamp(40px, 6vh, 64px); width: 100%;"><path d="M0 1 L100 1" stroke="rgba(241,236,226,.28)" stroke-width="2" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1;"></path></svg>
+      <p data-reveal style="margin: clamp(36px, 5vh, 52px) 0 0; max-width: 640px; font-size: 17px; line-height: 1.75; color: rgba(241,236,226,.66);">Nuestro objetivo es que cada cliente cuente con una estrategia de comunicaci&oacute;n alineada con su negocio, capaz de diferenciarlo en un mercado cada vez m&aacute;s competitivo.</p>
+    </div>
+  </section>
+
+  <section id="contacto" data-screen-label="Contacto" style="position: relative; overflow: hidden; padding: clamp(90px, 14vh, 150px) clamp(20px, 4.5vw, 64px) 0;">
+    <div data-plx="0.05" style="position: absolute; right: 3%; bottom: 90px; will-change: transform; opacity: .14;">
+      <svg width="230" viewBox="0 0 48 48" fill="none" style="display: block; width: clamp(140px, 18vw, 230px); height: auto; animation: omSpin 60s linear infinite; transform-origin: 50% 50%;"><g stroke="#171412" stroke-width="2" stroke-linecap="round"><line x1="24" y1="2.5" x2="24" y2="45.5"></line><line x1="2.5" y1="24" x2="45.5" y2="24"></line><line x1="8.8" y1="8.8" x2="39.2" y2="39.2"></line><line x1="39.2" y1="8.8" x2="8.8" y2="39.2"></line></g></svg>
+    </div>
+    <div style="max-width: 1280px; margin: 0 auto; position: relative;">
+      <div data-reveal style="display: flex; align-items: center; gap: 10px;">
+        <svg width="12" height="12" viewBox="0 0 24 24"><path d="M12 0L13.91 7.38L20.49 3.51L16.62 10.09L24 12L16.62 13.91L20.49 20.49L13.91 16.62L12 24L10.09 16.62L3.51 20.49L7.38 13.91L0 12L7.38 10.09L3.51 3.51L10.09 7.38Z" fill="#E9521E"></path></svg>
+        <span style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .22em; color: rgba(23,20,18,.55);">05 &middot; CONTACTO</span>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 48px clamp(40px, 5vw, 90px); align-items: flex-end; justify-content: space-between; margin-top: 36px;">
+        <div style="position: relative; min-width: min(100%, 320px);">
+          <h2 data-reveal style="margin: 0; font-family: Anton, sans-serif; font-weight: 400; font-size: clamp(56px, 9.5vw, 160px); line-height: .86; white-space: nowrap; letter-spacing: .002em;">TRABAJEMOS</h2>
+          <span data-reveal data-delay=".2" style="display: inline-block; margin-top: 6px; font-family: 'Homemade Apple', cursive; font-size: clamp(36px, 6vw, 92px); color: #E9521E; transform: rotate(-4deg);">juntos</span>
+        </div>
+        <div style="min-width: min(100%, 320px); max-width: 560px; flex: 1;">
+          <p data-reveal style="margin: 0; max-width: 520px; font-size: 16.5px; line-height: 1.78; color: #575046;">En OUSHY Studio entendemos el marketing como una herramienta de crecimiento. Nos involucramos en cada proyecto como parte del equipo de nuestros clientes, aportando creatividad, an&aacute;lisis y una ejecuci&oacute;n cuidada en cada detalle.</p>
+          <div data-reveal data-delay=".12" style="display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin-top: 34px;">
+            <a href="https://www.instagram.com/oushystudio/" target="_blank" rel="noopener" data-hover style="font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: .14em; background: #171412; color: #F1ECE2; border-radius: 999px; padding: 19px 34px; transition: background .35s, transform .35s;" style-hover="background: #E9521E; color: #F1ECE2; transform: translateY(-2px);">INICIAR PROYECTO &#8599;</a>
+            <a href="https://www.instagram.com/oushystudio/" target="_blank" rel="noopener" data-hover style="font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: .14em; color: #171412; border-bottom: 1.4px solid #E9521E; padding-bottom: 4px;" style-hover="color: #E9521E;">@OUSHYSTUDIO</a>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: clamp(70px, 11vh, 120px); border-top: 1px solid rgba(23,20,18,.14); padding: 24px 0 28px; display: flex; flex-wrap: wrap; gap: 12px 32px; justify-content: space-between; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: .18em; color: #6F675C;">
+        <span>&copy; OUSHY STUDIO &mdash; 2026</span>
+        <span>CREAMOS, PRODUCIMOS Y POTENCIAMOS TU MARCA</span>
+        <span>ARG &#9656; WORKING GLOBALLY</span>
+      </div>
+    </div>
+  </section>
+
+  <sc-if value="{{ grano }}" hint-placeholder-val="{{ true }}">
+    <div style="position: fixed; inset: 0; z-index: 150; pointer-events: none; opacity: .05; mix-blend-mode: multiply; background: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E&quot;);"></div>
+  </sc-if>
+
+  <div data-cursor-dot style="position: fixed; top: 0; left: 0; width: 8px; height: 8px; border-radius: 50%; background: #E9521E; z-index: 300; pointer-events: none; transform: translate(-100px, -100px); display: none;"></div>
+  <div data-cursor-ring style="position: fixed; top: 0; left: 0; width: 36px; height: 36px; border-radius: 50%; border: 1.2px solid rgba(23,20,18,.5); z-index: 299; pointer-events: none; transform: translate(-100px, -100px); display: none; transition: width .25s, height .25s, border-color .25s, background .25s;"></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;granoPapel&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Acabado&quot;},&quot;cursorCustom&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Acabado&quot;},&quot;velocidadMarquee&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:33,&quot;min&quot;:10,&quot;max&quot;:60,&quot;step&quot;:1,&quot;unit&quot;:&quot;s&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Animación&quot;}}">
+class Component extends DCLogic {
+  constructor(p) {
+    super(p);
+    this.root = React.createRef();
+    this._c = [];
+    this._ringSize = 36;
+  }
+  componentDidMount() {
+    const root = this.root.current;
+    if (!root) return;
+    this._fine = window.matchMedia && matchMedia('(pointer:fine)').matches;
+    this._setupReveals(root);
+    this._setupDraws(root);
+    this._setupWords(root);
+    this._setupCursor(root);
+    this._setupAnchors(root);
+    this._collect(root);
+    this._applyMarquee(root);
+    this._loop = this._loop.bind(this);
+    this._raf = requestAnimationFrame(this._loop);
+  }
+  componentDidUpdate() {
+    const root = this.root.current;
+    if (root) { this._applyMarquee(root); this._applyCursor(root); }
+  }
+  componentWillUnmount() {
+    cancelAnimationFrame(this._raf);
+    this._c.forEach(f => { try { f(); } catch (e) {} });
+  }
+  _on(t, ev, fn, opt) {
+    t.addEventListener(ev, fn, opt);
+    this._c.push(() => t.removeEventListener(ev, fn, opt));
+  }
+  _setupReveals(root) {
+    const io = new IntersectionObserver(ents => {
+      ents.forEach(en => {
+        if (!en.isIntersecting) return;
+        const el = en.target;
+        const d = parseFloat(el.dataset.delay || '0');
+        el.style.transitionProperty = 'opacity, transform';
+        el.style.transitionDuration = '1s, 1.15s';
+        el.style.transitionTimingFunction = 'cubic-bezier(.22,1,.36,1)';
+        el.style.transitionDelay = d + 's, ' + d + 's';
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+        io.unobserve(el);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -5% 0px' });
+    root.querySelectorAll('[data-reveal]').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.willChange = 'opacity, transform';
+      io.observe(el);
+    });
+    this._c.push(() => io.disconnect());
+  }
+  _setupDraws(root) {
+    const io = new IntersectionObserver(ents => {
+      ents.forEach(en => {
+        if (!en.isIntersecting) return;
+        const svg = en.target;
+        const dur = parseFloat(svg.dataset.drawdur || '1.3');
+        const delay = parseFloat(svg.dataset.drawdelay || '0.1');
+        svg.querySelectorAll('path,line,circle,rect,polyline,ellipse').forEach((s, i) => {
+          if (s.getAttribute('pathLength') !== '1') return;
+          s.style.transition = 'stroke-dashoffset ' + dur + 's cubic-bezier(.65,0,.35,1) ' + (delay + i * 0.18) + 's';
+          s.style.strokeDashoffset = '0';
+        });
+        io.unobserve(svg);
+      });
+    }, { threshold: 0.35 });
+    root.querySelectorAll('[data-draw]').forEach(s => io.observe(s));
+    this._c.push(() => io.disconnect());
+  }
+  _setupWords(root) {
+    this._wordEls = [];
+    const esc = w => w.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+    root.querySelectorAll('[data-words]').forEach(el => {
+      if (!el.dataset.splitDone) {
+        const words = el.textContent.trim().split(/\s+/);
+        el.innerHTML = words.map(w => '<span style="opacity:.13;transition:opacity .3s linear">' + esc(w) + '</span>').join(' ');
+        el.dataset.splitDone = '1';
+      }
+      this._wordEls.push({ el, spans: Array.from(el.querySelectorAll('span')), lit: -1 });
+    });
+  }
+  _setupCursor(root) {
+    this._dot = root.querySelector('[data-cursor-dot]');
+    this._ring = root.querySelector('[data-cursor-ring]');
+    this._mx = -100; this._my = -100; this._rx = -100; this._ry = -100;
+    this._hovering = false;
+    this._on(window, 'mousemove', e => { this._mx = e.clientX; this._my = e.clientY; });
+    this._on(root, 'mouseover', e => {
+      const h = e.target.closest && e.target.closest('[data-hover]');
+      const now = !!h;
+      if (now === this._hovering) return;
+      this._hovering = now;
+      const r = this._ring;
+      if (!r) return;
+      this._ringSize = now ? 62 : 36;
+      r.style.width = this._ringSize + 'px';
+      r.style.height = this._ringSize + 'px';
+      r.style.borderColor = now ? '#E9521E' : 'rgba(23,20,18,.5)';
+      r.style.background = now ? 'rgba(233,82,30,.07)' : 'transparent';
+    });
+    this._applyCursor(root);
+  }
+  _applyCursor(root) {
+    const on = (this.props.cursorCustom ?? true) && this._fine;
+    if (this._dot) this._dot.style.display = on ? 'block' : 'none';
+    if (this._ring) this._ring.style.display = on ? 'block' : 'none';
+    if (on) root.setAttribute('data-oushy-cursor', '');
+    else root.removeAttribute('data-oushy-cursor');
+  }
+  _setupAnchors(root) {
+    this._on(root, 'click', e => {
+      const a = e.target.closest && e.target.closest('a[href^="#"]');
+      if (!a) return;
+      const id = a.getAttribute('href').slice(1);
+      const t = id && document.getElementById(id);
+      e.preventDefault();
+      const y = t ? t.getBoundingClientRect().top + window.scrollY - 68 : 0;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    });
+  }
+  _collect(root) {
+    this._nav = root.querySelector('[data-nav]');
+    this._navSc = null;
+    this._plx = Array.from(root.querySelectorAll('[data-plx]')).map(el => ({ el, sp: parseFloat(el.dataset.plx || '0.05'), cur: 0 }));
+    this._proc = root.querySelector('[data-process]');
+    this._procPath = root.querySelector('[data-process-path]');
+    this._procStar = root.querySelector('[data-process-star]');
+    this._procNodes = Array.from(root.querySelectorAll('[data-process-node]'));
+    this._procNodes.forEach(n => {
+      n.style.transition = 'opacity .5s ease, transform .7s cubic-bezier(.22,1,.36,1), border-color .5s';
+      n.style.opacity = '.2';
+      n.style.transform = 'scale(.82)';
+      n._on = false;
+    });
+    this._procP = 0;
+  }
+  _applyMarquee(root) {
+    const base = this.props.velocidadMarquee ?? 26;
+    root.querySelectorAll('[data-marquee-track]').forEach(t => {
+      const f = parseFloat(t.dataset.mfactor || '1');
+      t.style.animationDuration = (base * f) + 's';
+    });
+  }
+  _loop() {
+    const vh = window.innerHeight;
+    if (this._nav) {
+      const sc = window.scrollY > 28;
+      if (sc !== this._navSc) {
+        this._navSc = sc;
+        const n = this._nav;
+        n.style.background = sc ? 'rgba(241,236,226,.86)' : 'transparent';
+        n.style.backdropFilter = sc ? 'blur(14px) saturate(1.15)' : 'none';
+        n.style.webkitBackdropFilter = n.style.backdropFilter;
+        n.style.borderBottomColor = sc ? 'rgba(23,20,18,.09)' : 'transparent';
+      }
+    }
+    if (this._dot) {
+      this._dot.style.transform = 'translate(' + (this._mx - 4) + 'px,' + (this._my - 4) + 'px)';
+      this._rx += (this._mx - this._rx) * 0.16;
+      this._ry += (this._my - this._ry) * 0.16;
+      const s = this._ringSize / 2;
+      this._ring.style.transform = 'translate(' + (this._rx - s) + 'px,' + (this._ry - s) + 'px)';
+    }
+    if (this._wordEls) this._wordEls.forEach(w => {
+      const r = w.el.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > vh) return;
+      const p = Math.min(1, Math.max(0, (vh * 0.9 - r.top) / (r.height + vh * 0.45)));
+      const lit = Math.round(p * w.spans.length + 0.0001);
+      if (w.lit !== lit) {
+        w.lit = lit;
+        w.spans.forEach((s, i) => { s.style.opacity = i < lit ? '1' : '0.13'; });
+      }
+    });
+    if (this._plx) this._plx.forEach(o => {
+      const r = o.el.getBoundingClientRect();
+      if (r.bottom < -300 || r.top > vh + 300) return;
+      const rawTop = r.top - o.cur;
+      const target = (rawTop + r.height / 2 - vh / 2) * o.sp;
+      o.cur += (target - o.cur) * 0.1;
+      o.el.style.transform = 'translate3d(0,' + o.cur.toFixed(2) + 'px,0)';
+    });
+    if (this._proc && this._procPath) {
+      const r = this._proc.getBoundingClientRect();
+      const p = Math.min(1, Math.max(0, (vh * 0.85 - r.top) / (r.height * 0.95)));
+      this._procP += (p - this._procP) * 0.09;
+      const v = this._procP;
+      this._procPath.style.strokeDashoffset = String(Math.max(0, 1 - v));
+      const n = this._procNodes.length;
+      this._procNodes.forEach((node, i) => {
+        const on = v > (i + 0.45) / n;
+        if (on !== node._on) {
+          node._on = on;
+          node.style.opacity = on ? '1' : '.2';
+          node.style.transform = on ? 'scale(1)' : 'scale(.82)';
+          node.style.borderColor = on ? '#E9521E' : '#171412';
+        }
+      });
+      if (this._procStar) {
+        const on = v > 0.93;
+        if (on !== this._starOn) {
+          this._starOn = on;
+          this._procStar.style.opacity = on ? '1' : '0';
+          this._procStar.style.transform = on ? 'scale(1) rotate(0deg)' : 'scale(.4) rotate(-90deg)';
+        }
+      }
+    }
+    this._raf = requestAnimationFrame(this._loop);
+  }
+  renderVals() {
+    return {
+      rootRef: this.root,
+      grano: this.props.granoPapel ?? true
+    };
+  }
+}
+</script>
+</body>
+</html>

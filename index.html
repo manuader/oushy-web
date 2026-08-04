@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>oushy studio — estudio creativo integral</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="assets/oushy-mark.png">
+<link rel="preload" as="image" href="assets/oushy-wordmark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..600&amp;family=Archivo:ital,wght@0,100..900;1,100..900&amp;family=Space+Mono:ital,wght@0,400;0,700;1,400&amp;family=Homemade+Apple&amp;display=swap" rel="stylesheet">
+<style>
+html, body { margin: 0; padding: 0; background: #F6EFE9; }
+body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+a { color: #54574F; text-decoration: none; }
+a:hover { color: #EA6330; }
+::selection { background: #EA6330; color: #F6EFE9; }
+[data-oushy-cursor], [data-oushy-cursor] a, [data-oushy-cursor] button { cursor: none; }
+@keyframes omFade { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes omDraw { to { stroke-dashoffset: 0; } }
+@keyframes omSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes omMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes omCue { 0% { transform: translateY(-102%); } 55% { transform: translateY(0); } 100% { transform: translateY(102%); } }
+@keyframes omClipIn { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes omMarkIn { from { clip-path: inset(100% 0 0 0); transform: translateY(20px); } to { clip-path: inset(-6% 0 0 0); transform: translateY(0); } }
+@keyframes omCurtainUp { to { transform: translateY(-101%); } }
+@media (max-width: 860px) { [data-navlinks] { display: none !important; } }
+</style>
+</helmet>
+<div ref="{{ rootRef }}" style="font-family: Archivo, sans-serif; background: #F6EFE9; color: #54574F; min-height: 100vh; overflow-x: clip; position: relative;">
+
+  <sc-if value="{{ intro }}" hint-placeholder-val="{{ true }}">
+    <div data-preloader style="position: fixed; inset: 0; z-index: 400; background: #F6EFE9; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 26px; pointer-events: none; animation: omCurtainUp .9s cubic-bezier(.76,0,.24,1) 1.45s forwards; will-change: transform;">
+      <img src="assets/oushy-mark.png" alt="oushy" style="height: clamp(96px, 16vh, 150px); width: auto; animation: omMarkIn 1s cubic-bezier(.22,1,.36,1) .1s backwards; will-change: clip-path, transform;">
+      <span style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: .34em; color: #8B8E82; animation: omFade .8s cubic-bezier(.22,1,.36,1) .55s backwards;">ESTUDIO CREATIVO INTEGRAL</span>
+    </div>
+  </sc-if>
+
+  <nav data-nav style="position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 16px clamp(20px, 4vw, 56px); border-bottom: 1px solid transparent; transition: background .4s, border-color .4s, backdrop-filter .4s;">
+    <a href="#" data-hover style="display: flex; align-items: center;">
+      <img src="assets/oushy-wordmark.png" alt="oushy studio" style="height: 32px; width: auto; display: block;">
+    </a>
+    <div style="display: flex; align-items: center; gap: clamp(18px, 2.6vw, 40px);">
+      <div data-navlinks style="display: flex; gap: clamp(16px, 2.2vw, 30px);">
+        <a href="#estudio" data-hover style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .16em;" style-hover="color: #EA6330;">EL ESTUDIO</a>
+        <a href="#servicios" data-hover style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .16em;" style-hover="color: #EA6330;">SERVICIOS</a>
+        <a href="#proceso" data-hover style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .16em;" style-hover="color: #EA6330;">PROCESO</a>
+        <a href="#industrias" data-hover style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .16em;" style-hover="color: #EA6330;">INDUSTRIAS</a>
+      </div>
+      <a href="#contacto" data-hover data-magnet style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .14em; border: 1.3px solid #54574F; border-radius: 999px; padding: 10px 20px; transition: background .35s, color .35s;" style-hover="background: #54574F; color: #F6EFE9;">INICIAR PROYECTO</a>
+    </div>
+  </nav>
+
+  <section data-screen-label="Hero" style="position: relative; min-height: 100vh; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; padding: 120px clamp(20px, 4.5vw, 64px) 90px;">
+    <svg style="position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none;" viewBox="0 0 1440 900" preserveAspectRatio="none" fill="none">
+      <path d="M -30 640 C 380 560, 720 340, 1470 110" stroke="#EA6330" stroke-width="2" vector-effect="non-scaling-stroke" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1; animation: omDraw 1.9s cubic-bezier(.65,0,.35,1) 1.7s forwards;"></path>
+      <path d="M -30 726 C 420 646, 760 424, 1470 194" stroke="rgba(84,87,79,.2)" stroke-width="1.5" vector-effect="non-scaling-stroke" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1; animation: omDraw 1.9s cubic-bezier(.65,0,.35,1) 1.95s forwards;"></path>
+    </svg>
+    <div style="position: relative; display: flex; justify-content: space-between; gap: 20px; font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .2em; color: #8B8E82; animation: omFade .9s cubic-bezier(.22,1,.36,1) 1.55s backwards;">
+      <span>ESTUDIO CREATIVO INTEGRAL</span>
+      <span>ARG &#9656; WORKING GLOBALLY</span>
+    </div>
+    <div style="position: relative; margin-top: clamp(26px, 5vh, 54px); align-self: center; width: min(84vw, 1020px);">
+      <img data-plx="-0.045" src="assets/oushy-wordmark.png" alt="oushy" style="display: block; width: 100%; height: auto; animation: omClipIn 1.3s cubic-bezier(.77,0,.18,1) 1.6s backwards; will-change: clip-path, transform;">
+      <span style="position: absolute; right: -1%; bottom: -17%; z-index: 2; font-family: 'Homemade Apple', cursive; font-size: clamp(26px, 4vw, 58px); color: #EA6330; transform: rotate(-5deg); white-space: nowrap; animation: omFade 1s cubic-bezier(.22,1,.36,1) 2.55s backwards;">studio</span>
+      <svg width="clamp(40px, 5vw, 76px)" viewBox="0 0 48 48" fill="none" style="position: absolute; top: -9%; right: -5%; width: clamp(40px, 5vw, 76px); height: auto; animation: omSpin 36s linear 3.4s infinite; transform-origin: 50% 50%;"><g stroke="#EA6330" stroke-width="2.8" stroke-linecap="round"><line x1="24" y1="1.5" x2="24" y2="46.5" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1; animation: omDraw .8s cubic-bezier(.65,0,.35,1) 2.2s forwards;"></line><line x1="1.5" y1="24" x2="46.5" y2="24" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1; animation: omDraw .8s cubic-bezier(.65,0,.35,1) 2.35s forwards;"></line><line x1="33.2" y1="14.8" x2="14.8" y2="33.2" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1; animation: omDraw .8s cubic-bezier(.65,0,.35,1) 2.5s forwards;"></line><line x1="14.8" y1="14.8" x2="33.2" y2="33.2" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1; animation: omDraw .8s cubic-bezier(.65,0,.35,1) 2.65s forwards;"></line></g></svg>
+    </div>
+    <div style="position: relative; margin-top: clamp(52px, 9vh, 92px); display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 36px; align-items: end;">
+      <div>
+        <p style="margin: 0; max-width: 560px; font-family: Fredoka, sans-serif; font-weight: 500; font-size: clamp(19px, 1.8vw, 26px); line-height: 1.4; letter-spacing: 0; text-wrap: pretty; animation: omFade .9s cubic-bezier(.22,1,.36,1) 2s backwards;">Creamos, producimos y potenciamos tu marca <svg width="16" height="16" viewBox="0 0 24 24" style="display: inline-block; vertical-align: -1px;"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg></p>
+        <p style="margin: 18px 0 0; font-family: 'Space Mono', monospace; font-size: 11.5px; letter-spacing: .16em; color: #8B8E82; animation: omFade .9s cubic-bezier(.22,1,.36,1) 2.15s backwards;">MARKETING DIGITAL &middot; ESTRATEGIA &amp; META ADS &middot; BRANDING &middot; CONTENIDO</p>
+      </div>
+      <div style="display: flex; gap: 14px; flex-wrap: wrap; justify-content: flex-end; animation: omFade .9s cubic-bezier(.22,1,.36,1) 2.3s backwards;">
+        <a href="#contacto" data-hover data-magnet style="font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: .14em; background: #EA6330; color: #F6EFE9; border-radius: 999px; padding: 18px 32px; transition: background .35s;" style-hover="background: #C94D1D; color: #F6EFE9;">INICIAR PROYECTO &#8599;</a>
+        <a href="#servicios" data-hover data-magnet style="font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: .14em; border: 1.4px solid #54574F; border-radius: 999px; padding: 18px 32px; transition: background .35s, color .35s;" style-hover="background: #54574F; color: #F6EFE9;">VER SERVICIOS</a>
+      </div>
+    </div>
+    <div style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 9px; animation: omFade 1s ease 3.3s backwards;">
+      <span style="font-family: 'Space Mono', monospace; font-size: 9.5px; letter-spacing: .34em; color: #8B8E82;">SCROLL</span>
+      <div style="width: 2px; height: 42px; overflow: hidden; border-radius: 2px;">
+        <div style="width: 2px; height: 100%; background: #EA6330; animation: omCue 2.3s cubic-bezier(.65,0,.35,1) 4s infinite;"></div>
+      </div>
+    </div>
+  </section>
+
+  <div data-skew style="border-top: 1px solid rgba(84,87,79,.18); border-bottom: 1px solid rgba(84,87,79,.18); padding: 15px 0; overflow: hidden; display: flex; will-change: transform;">
+    <div data-marquee-track style="flex: none; display: inline-flex; align-items: center; width: max-content; animation: omMarquee 26s linear infinite; will-change: transform;">
+      <div style="display: inline-flex; align-items: center; gap: 34px; padding-right: 34px;">
+        <span style="font-family: Fredoka, sans-serif; font-weight: 500; font-size: 23px; white-space: nowrap;">branding</span><svg width="15" height="15" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg>
+        <span style="font-family: Fredoka, sans-serif; font-weight: 500; font-size: 23px; white-space: nowrap;">identidad visual</span><svg width="15" height="15" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg>
+        <span style="font-family: Fredoka, sans-serif; font-weight: 500; font-size: 23px; white-space: nowrap;">redes sociales</span><svg width="15" height="15" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg>
+        <span style="font-family: Fredoka, sans-serif; font-weight: 500; font-size: 23px; white-space: nowrap;">contenido ugc</span><svg width="15" height="15" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg>
+        <span style="font-family: Fredoka, sans-serif; font-weight: 500; font-size: 23px; white-space: nowrap;">meta ads</span><svg width="15" height="15" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg>
+        <span style="font-family: Fredoka, sans-serif; font-weight: 500; font-size: 23px; white-space: nowrap;">direcci&oacute;n creativa</span><svg width="15" height="15" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg>
+        <span style="font-family: Fredoka, sans-serif; font-weight: 500; font-size: 23px; white-space: nowrap;">estrategia</span><svg width="15" height="15" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg>
+        <span style="font-family: Fredoka, sans-serif; font-weight: 500; font-size: 23px; white-space: nowrap;">producci&oacute;n audiovisual</span><svg width="15" height="15" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg>
+      </div>
+      <div style="display: inline-flex; align-items: center; gap: 34px; padding-right: 34px;">
+        <span style="font-family: Fredoka, sans-serif; font-weight: 500; font-size: 23px; white-space: nowrap;">branding</span><svg width="15" height="15" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg>
+        <span style="font-family: Fredoka, sans-serif; font-weight: 500; font-size: 23px; white-space: nowrap;">identidad visual</span><svg width="15" height="15" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg>
+        <span style="font-family: Fredoka, sans-serif; font-weight: 500; font-size: 23px; white-space: nowrap;">redes sociales</span><svg width="15" height="15" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg>
+        <span style="font-family: Fredoka, sans-serif; font-weight: 500; font-size: 23px; white-space: nowrap;">contenido ugc</span><svg width="15" height="15" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg>
+        <span style="font-family: Fredoka, sans-serif; font-weight: 500; font-size: 23px; white-space: nowrap;">meta ads</span><svg width="15" height="15" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg>
+        <span style="font-family: Fredoka, sans-serif; font-weight: 500; font-size: 23px; white-space: nowrap;">direcci&oacute;n creativa</span><svg width="15" height="15" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg>
+        <span style="font-family: Fredoka, sans-serif; font-weight: 500; font-size: 23px; white-space: nowrap;">estrategia</span><svg width="15" height="15" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg>
+        <span style="font-family: Fredoka, sans-serif; font-weight: 500; font-size: 23px; white-space: nowrap;">producci&oacute;n audiovisual</span><svg width="15" height="15" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg>
+      </div>
+    </div>
+  </div>
+
+  <section id="estudio" data-screen-label="El estudio" style="padding: clamp(90px, 14vh, 150px) clamp(20px, 4.5vw, 64px) clamp(80px, 12vh, 130px); max-width: 1280px; margin: 0 auto; box-sizing: border-box;">
+    <div data-reveal style="display: flex; align-items: center; gap: 10px;">
+      <svg width="12" height="12" viewBox="0 0 24 24"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg>
+      <span style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .22em; color: #8B8E82;">01 &middot; EL ESTUDIO</span>
+    </div>
+    <p data-words style="margin: 36px 0 0; max-width: 1080px; font-family: Fredoka, sans-serif; font-weight: 500; font-size: clamp(26px, 3.5vw, 54px); line-height: 1.18; letter-spacing: -.01em; text-wrap: pretty;">OUSHY Studio es una agencia de marketing y branding especializada en construir marcas con identidad, estrategia y una comunicaci&oacute;n que genera resultados.</p>
+    <div data-reveal data-delay=".15" style="margin-top: 30px; display: inline-block; position: relative;">
+      <span style="font-family: 'Homemade Apple', cursive; font-size: clamp(17px, 1.8vw, 24px); color: #EA6330; display: inline-block; transform: rotate(-2.5deg);">no existen las f&oacute;rmulas universales</span>
+      <svg data-draw data-drawdur="1.1" width="100%" height="12" viewBox="0 0 200 12" preserveAspectRatio="none" fill="none" style="position: absolute; left: 0; bottom: -12px; width: 100%;"><path d="M2 8 C 34 2, 68 11, 102 6 S 168 3, 198 7" stroke="#EA6330" stroke-width="2" stroke-linecap="round" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1;"></path></svg>
+    </div>
+    <div style="margin-top: clamp(48px, 7vh, 76px); display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 44px clamp(32px, 4vw, 72px);">
+      <p data-reveal data-delay=".05" style="margin: 0; max-width: 560px; font-size: 16.5px; line-height: 1.78; color: #6D7065;">Trabajamos de manera integral, acompa&ntilde;ando a cada cliente desde la estrategia hasta la ejecuci&oacute;n. Creemos que no existen las f&oacute;rmulas universales: cada marca tiene objetivos, desaf&iacute;os y necesidades diferentes. Por eso desarrollamos planes de trabajo personalizados, donde cada decisi&oacute;n responde a una estrategia clara y medible.</p>
+      <p data-reveal data-delay=".15" style="margin: 0; max-width: 560px; font-size: 16.5px; line-height: 1.78; color: #6D7065;">Nuestro equipo re&uacute;ne profesionales de distintas &aacute;reas para ofrecer un servicio completo, permitiendo que nuestros clientes deleguen toda su comunicaci&oacute;n en un solo lugar.</p>
+    </div>
+  </section>
+
+  <section id="servicios" data-screen-label="Servicios" style="border-top: 1px solid rgba(84,87,79,.18); padding: clamp(80px, 12vh, 130px) clamp(20px, 4.5vw, 64px) clamp(90px, 13vh, 140px);">
+    <div style="max-width: 1280px; margin: 0 auto;">
+      <div data-reveal style="display: flex; align-items: center; gap: 10px;">
+        <svg width="12" height="12" viewBox="0 0 24 24"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg>
+        <span style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .22em; color: #8B8E82;">02 &middot; SERVICIOS</span>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px 40px; margin-top: 30px;">
+        <h2 data-reveal="clip" style="margin: 0; font-family: Fredoka, sans-serif; font-weight: 600; font-size: clamp(52px, 8vw, 122px); line-height: .95; letter-spacing: -.015em;">servicios <svg width="clamp(26px, 3.5vw, 52px)" viewBox="0 0 24 24" style="display: inline-block; width: clamp(26px, 3.5vw, 52px); height: auto; vertical-align: .06em;"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg></h2>
+        <div data-reveal data-delay=".15" style="position: relative; padding: 14px 26px;">
+          <span style="font-family: 'Homemade Apple', cursive; font-size: clamp(16px, 1.7vw, 22px); color: #EA6330; display: inline-block; transform: rotate(-3deg); white-space: nowrap;">todo en un mismo lugar</span>
+          <svg data-draw data-drawdur="1.4" viewBox="0 0 260 70" preserveAspectRatio="none" fill="none" style="position: absolute; inset: 0; width: 100%; height: 100%;"><ellipse cx="130" cy="35" rx="126" ry="31" stroke="#EA6330" stroke-width="1.6" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1;" transform="rotate(-2 130 35)"></ellipse></svg>
+        </div>
+      </div>
+      <div style="margin-top: clamp(44px, 7vh, 70px);">
+        <div data-hover style="position: relative; display: grid; grid-template-columns: clamp(44px, 5vw, 80px) 1.05fr 1fr clamp(64px, 8vw, 104px); gap: clamp(18px, 3vw, 44px); align-items: start; padding: 44px 0; border-top: 1px solid rgba(84,87,79,.18); transition: transform .5s cubic-bezier(.22,1,.36,1);" style-hover="transform: translateX(10px);">
+          <span style="font-family: 'Space Mono', monospace; font-size: 13px; color: #EA6330;">(01)</span>
+          <h3 data-reveal style="margin: 0; font-family: Fredoka, sans-serif; font-weight: 600; font-size: clamp(28px, 3.4vw, 50px); line-height: 1; letter-spacing: -.01em;">estrategia</h3>
+          <div data-reveal data-delay=".1" style="display: flex; flex-direction: column; gap: 12px;">
+            <div style="display: flex; gap: 10px; align-items: flex-start;"><svg width="10" height="10" viewBox="0 0 24 24" style="flex: none; margin-top: 6px;"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg><span style="font-size: 15.5px; line-height: 1.5; color: #63665C;">Estrategia de marca y posicionamiento</span></div>
+            <div style="display: flex; gap: 10px; align-items: flex-start;"><svg width="10" height="10" viewBox="0 0 24 24" style="flex: none; margin-top: 6px;"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg><span style="font-size: 15.5px; line-height: 1.5; color: #63665C;">Consultor&iacute;a y acompa&ntilde;amiento estrat&eacute;gico</span></div>
+            <div style="display: flex; gap: 10px; align-items: flex-start;"><svg width="10" height="10" viewBox="0 0 24 24" style="flex: none; margin-top: 6px;"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg><span style="font-size: 15.5px; line-height: 1.5; color: #63665C;">Planificaci&oacute;n y calendarizaci&oacute;n de contenido</span></div>
+          </div>
+          <svg data-draw data-drawdur="1.2" viewBox="0 0 48 48" fill="none" style="width: 100%; max-width: 92px; justify-self: end;"><g stroke="#54574F" stroke-width="2" stroke-linecap="round"><circle cx="24" cy="24" r="16.5" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1;"></circle><circle cx="24" cy="24" r="7" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1;"></circle><line x1="24" y1="2.5" x2="24" y2="7.5" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1;"></line><line x1="24" y1="40.5" x2="24" y2="45.5" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1;"></line><line x1="2.5" y1="24" x2="7.5" y2="24" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1;"></line><line x1="40.5" y1="24" x2="45.5" y2="24" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1;"></line><circle cx="24" cy="24" r="1.6" fill="#EA6330" stroke="none"></circle></g></svg>
+        </div>
+        <div data-hover style="position: relative; display: grid; grid-template-columns: clamp(44px, 5vw, 80px) 1.05fr 1fr clamp(64px, 8vw, 104px); gap: clamp(18px, 3vw, 44px); align-items: start; padding: 44px 0; border-top: 1px solid rgba(84,87,79,.18); transition: transform .5s cubic-bezier(.22,1,.36,1);" style-hover="transform: translateX(10px);">
+          <span style="font-family: 'Space Mono', monospace; font-size: 13px; color: #EA6330;">(02)</span>
+          <h3 data-reveal style="margin: 0; font-family: Fredoka, sans-serif; font-weight: 600; font-size: clamp(28px, 3.4vw, 50px); line-height: 1; letter-spacing: -.01em;">identidad</h3>
+          <div data-reveal data-delay=".1" style="display: flex; flex-direction: column; gap: 12px;">
+            <div style="display: flex; gap: 10px; align-items: flex-start;"><svg width="10" height="10" viewBox="0 0 24 24" style="flex: none; margin-top: 6px;"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg><span style="font-size: 15.5px; line-height: 1.5; color: #63665C;">Branding e identidad visual</span></div>
+            <div style="display: flex; gap: 10px; align-items: flex-start;"><svg width="10" height="10" viewBox="0 0 24 24" style="flex: none; margin-top: 6px;"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg><span style="font-size: 15.5px; line-height: 1.5; color: #63665C;">Direcci&oacute;n creativa</span></div>
+            <div style="display: flex; gap: 10px; align-items: flex-start;"><svg width="10" height="10" viewBox="0 0 24 24" style="flex: none; margin-top: 6px;"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg><span style="font-size: 15.5px; line-height: 1.5; color: #63665C;">Dise&ntilde;o gr&aacute;fico</span></div>
+            <div style="display: flex; gap: 10px; align-items: flex-start;"><svg width="10" height="10" viewBox="0 0 24 24" style="flex: none; margin-top: 6px;"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg><span style="font-size: 15.5px; line-height: 1.5; color: #63665C;">Desarrollo de piezas para medios digitales e impresos</span></div>
+          </div>
+          <svg data-draw data-drawdur="1.2" viewBox="0 0 48 48" fill="none" style="width: 100%; max-width: 92px; justify-self: end;"><g stroke="#54574F" stroke-width="2" stroke-linecap="round"><rect x="5" y="5" width="38" height="38" rx="10" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1;"></rect><path d="M16 15v9c0 4.4 3.6 8 8 8s8-3.6 8-8v-9" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1;"></path></g></svg>
+        </div>
+        <div data-hover style="position: relative; display: grid; grid-template-columns: clamp(44px, 5vw, 80px) 1.05fr 1fr clamp(64px, 8vw, 104px); gap: clamp(18px, 3vw, 44px); align-items: start; padding: 44px 0; border-top: 1px solid rgba(84,87,79,.18); transition: transform .5s cubic-bezier(.22,1,.36,1);" style-hover="transform: translateX(10px);">
+          <span style="font-family: 'Space Mono', monospace; font-size: 13px; color: #EA6330;">(03)</span>
+          <h3 data-reveal style="margin: 0; font-family: Fredoka, sans-serif; font-weight: 600; font-size: clamp(28px, 3.4vw, 50px); line-height: 1; letter-spacing: -.01em;">contenido</h3>
+          <div data-reveal data-delay=".1" style="display: flex; flex-direction: column; gap: 12px;">
+            <div style="display: flex; gap: 10px; align-items: flex-start;"><svg width="10" height="10" viewBox="0 0 24 24" style="flex: none; margin-top: 6px;"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg><span style="font-size: 15.5px; line-height: 1.5; color: #63665C;">Gesti&oacute;n integral de redes sociales</span></div>
+            <div style="display: flex; gap: 10px; align-items: flex-start;"><svg width="10" height="10" viewBox="0 0 24 24" style="flex: none; margin-top: 6px;"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg><span style="font-size: 15.5px; line-height: 1.5; color: #63665C;">Producci&oacute;n y edici&oacute;n de contenido audiovisual</span></div>
+            <div style="display: flex; gap: 10px; align-items: flex-start;"><svg width="10" height="10" viewBox="0 0 24 24" style="flex: none; margin-top: 6px;"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg><span style="font-size: 15.5px; line-height: 1.5; color: #63665C;">Reels, fotograf&iacute;a y contenido UGC</span></div>
+            <div style="display: flex; gap: 10px; align-items: flex-start;"><svg width="10" height="10" viewBox="0 0 24 24" style="flex: none; margin-top: 6px;"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg><span style="font-size: 15.5px; line-height: 1.5; color: #63665C;">Redacci&oacute;n de copies</span></div>
+          </div>
+          <svg data-draw data-drawdur="1.2" viewBox="0 0 48 48" fill="none" style="width: 100%; max-width: 92px; justify-self: end;"><g stroke="#54574F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="9" width="38" height="30" rx="8" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1;"></rect><path d="M21 18l9 6-9 6z" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1;"></path></g></svg>
+        </div>
+        <div data-hover style="position: relative; display: grid; grid-template-columns: clamp(44px, 5vw, 80px) 1.05fr 1fr clamp(64px, 8vw, 104px); gap: clamp(18px, 3vw, 44px); align-items: start; padding: 44px 0; border-top: 1px solid rgba(84,87,79,.18); border-bottom: 1px solid rgba(84,87,79,.18); transition: transform .5s cubic-bezier(.22,1,.36,1);" style-hover="transform: translateX(10px);">
+          <span style="font-family: 'Space Mono', monospace; font-size: 13px; color: #EA6330;">(04)</span>
+          <h3 data-reveal style="margin: 0; font-family: Fredoka, sans-serif; font-weight: 600; font-size: clamp(28px, 3.4vw, 50px); line-height: 1; letter-spacing: -.01em;">performance</h3>
+          <div data-reveal data-delay=".1" style="display: flex; flex-direction: column; gap: 12px;">
+            <div style="display: flex; gap: 10px; align-items: flex-start;"><svg width="10" height="10" viewBox="0 0 24 24" style="flex: none; margin-top: 6px;"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg><span style="font-size: 15.5px; line-height: 1.5; color: #63665C;">Publicidad en Meta Ads</span></div>
+            <div style="display: flex; gap: 10px; align-items: flex-start;"><svg width="10" height="10" viewBox="0 0 24 24" style="flex: none; margin-top: 6px;"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg><span style="font-size: 15.5px; line-height: 1.5; color: #63665C;">Lanzamientos y campa&ntilde;as</span></div>
+          </div>
+          <svg data-draw data-drawdur="1.2" viewBox="0 0 48 48" fill="none" style="width: 100%; max-width: 92px; justify-self: end;"><g stroke="#54574F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 40L18 26l8 7L40 14" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1;"></path><path d="M31 13h10v10" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1;"></path><line x1="5" y1="45" x2="43" y2="45" opacity=".3" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1;"></line></g></svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="proceso" data-screen-label="Proceso" style="border-top: 1px solid rgba(84,87,79,.18); padding: clamp(80px, 12vh, 130px) clamp(20px, 4.5vw, 64px) clamp(90px, 13vh, 140px);">
+    <div style="max-width: 1280px; margin: 0 auto;">
+      <div data-reveal style="display: flex; align-items: center; gap: 10px;">
+        <svg width="12" height="12" viewBox="0 0 24 24"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg>
+        <span style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .22em; color: #8B8E82;">03 &middot; C&Oacute;MO TRABAJAMOS</span>
+      </div>
+      <h2 data-reveal="clip" style="margin: 30px 0 0; max-width: 980px; font-family: Fredoka, sans-serif; font-weight: 600; font-size: clamp(38px, 5.4vw, 84px); line-height: 1.02; letter-spacing: -.015em;">de la estrategia<br>a la ejecuci&oacute;n</h2>
+      <div data-process style="position: relative; margin-top: clamp(56px, 9vh, 96px);">
+        <svg style="position: absolute; top: 0; left: 0; width: 100%; height: 150px; pointer-events: none;" viewBox="0 0 1000 150" preserveAspectRatio="none" fill="none">
+          <path data-process-path d="M -12 118 C 40 118, 70 52, 125 56 C 180 60, 200 108, 260 106 C 320 104, 330 48, 375 50 C 425 52, 450 112, 510 108 C 570 104, 585 44, 625 48 C 680 53, 700 116, 760 110 C 815 105, 830 55, 875 56 C 930 57, 950 96, 1012 84" stroke="#EA6330" stroke-width="2" vector-effect="non-scaling-stroke" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1;"></path>
+        </svg>
+        <svg data-process-star width="26" height="26" viewBox="0 0 24 24" style="position: absolute; right: -6px; top: 62px; opacity: 0; transform: scale(.4) rotate(-90deg); transition: opacity .5s ease, transform .7s cubic-bezier(.22,1,.36,1);"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0 20px;">
+          <div style="text-align: center;">
+            <div style="height: 150px; display: flex; align-items: center; justify-content: center;"><div data-process-node style="width: 58px; height: 58px; border: 1.6px solid #54574F; border-radius: 50%; background: #F6EFE9; display: flex; align-items: center; justify-content: center; font-family: Fredoka, sans-serif; font-weight: 600; font-size: 17px;">01</div></div>
+            <div style="font-family: Fredoka, sans-serif; font-weight: 500; font-size: clamp(21px, 2vw, 27px); margin-top: 18px;">planificar</div>
+            <div style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .12em; color: #8B8E82; margin-top: 9px;">ESTRATEGIA Y CALENDARIO</div>
+          </div>
+          <div style="text-align: center;">
+            <div style="height: 150px; display: flex; align-items: center; justify-content: center;"><div data-process-node style="width: 58px; height: 58px; border: 1.6px solid #54574F; border-radius: 50%; background: #F6EFE9; display: flex; align-items: center; justify-content: center; font-family: Fredoka, sans-serif; font-weight: 600; font-size: 17px;">02</div></div>
+            <div style="font-family: Fredoka, sans-serif; font-weight: 500; font-size: clamp(21px, 2vw, 27px); margin-top: 18px;">crear</div>
+            <div style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .12em; color: #8B8E82; margin-top: 9px;">DISE&Ntilde;O Y PRODUCCI&Oacute;N</div>
+          </div>
+          <div style="text-align: center;">
+            <div style="height: 150px; display: flex; align-items: center; justify-content: center;"><div data-process-node style="width: 58px; height: 58px; border: 1.6px solid #54574F; border-radius: 50%; background: #F6EFE9; display: flex; align-items: center; justify-content: center; font-family: Fredoka, sans-serif; font-weight: 600; font-size: 17px;">03</div></div>
+            <div style="font-family: Fredoka, sans-serif; font-weight: 500; font-size: clamp(21px, 2vw, 27px); margin-top: 18px;">ejecutar</div>
+            <div style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .12em; color: #8B8E82; margin-top: 9px;">PUBLICACI&Oacute;N Y CAMPA&Ntilde;AS</div>
+          </div>
+          <div style="text-align: center;">
+            <div style="height: 150px; display: flex; align-items: center; justify-content: center;"><div data-process-node style="width: 58px; height: 58px; border: 1.6px solid #54574F; border-radius: 50%; background: #F6EFE9; display: flex; align-items: center; justify-content: center; font-family: Fredoka, sans-serif; font-weight: 600; font-size: 17px;">04</div></div>
+            <div style="font-family: Fredoka, sans-serif; font-weight: 500; font-size: clamp(21px, 2vw, 27px); margin-top: 18px;">optimizar</div>
+            <div style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .12em; color: #8B8E82; margin-top: 9px;">AN&Aacute;LISIS Y MEJORA</div>
+          </div>
+        </div>
+      </div>
+      <p data-reveal style="margin: clamp(48px, 8vh, 80px) 0 0; max-width: 620px; font-size: 17px; line-height: 1.75; color: #6D7065;">Nos ocupamos de planificar, crear, ejecutar y optimizar cada acci&oacute;n para que la marca mantenga una presencia consistente y de alto nivel.</p>
+    </div>
+  </section>
+
+  <section id="industrias" data-screen-label="Industrias" style="border-top: 1px solid rgba(84,87,79,.18); padding: clamp(80px, 12vh, 130px) 0 clamp(80px, 12vh, 120px);">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 0 clamp(20px, 4.5vw, 64px); box-sizing: border-box;">
+      <div data-reveal style="display: flex; align-items: center; gap: 10px;">
+        <svg width="12" height="12" viewBox="0 0 24 24"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg>
+        <span style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .22em; color: #8B8E82;">04 &middot; INDUSTRIAS</span>
+      </div>
+      <p data-reveal style="margin: 30px 0 0; max-width: 640px; font-family: Fredoka, sans-serif; font-weight: 500; font-size: clamp(18px, 1.7vw, 23px); line-height: 1.5; text-wrap: pretty;">A lo largo de nuestra trayectoria trabajamos con empresas de diferentes industrias, tanto en Argentina como en el exterior.</p>
+    </div>
+    <div data-skew style="margin-top: clamp(44px, 7vh, 70px); border-top: 1px solid rgba(84,87,79,.18); border-bottom: 1px solid rgba(84,87,79,.18); padding: 30px 0 26px; overflow: hidden; display: flex; will-change: transform;">
+      <div data-marquee-track data-mfactor="1.5" style="flex: none; display: inline-flex; align-items: center; width: max-content; animation: omMarquee 39s linear infinite; will-change: transform;">
+        <div style="display: inline-flex; align-items: center; gap: 44px; padding-right: 44px;">
+          <span data-hover style="font-family: Fredoka, sans-serif; font-weight: 600; font-size: clamp(42px, 6.6vw, 96px); line-height: 1.15; white-space: nowrap; color: transparent; -webkit-text-stroke: 1.4px rgba(84,87,79,.85); transition: color .35s, -webkit-text-stroke .35s;" style-hover="color: #EA6330; -webkit-text-stroke: 1.4px #EA6330;">consumo masivo</span><svg width="24" height="24" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg>
+          <span data-hover style="font-family: Fredoka, sans-serif; font-weight: 600; font-size: clamp(42px, 6.6vw, 96px); line-height: 1.15; white-space: nowrap; color: transparent; -webkit-text-stroke: 1.4px rgba(84,87,79,.85); transition: color .35s, -webkit-text-stroke .35s;" style-hover="color: #EA6330; -webkit-text-stroke: 1.4px #EA6330;">bienestar</span><svg width="24" height="24" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg>
+          <span data-hover style="font-family: Fredoka, sans-serif; font-weight: 600; font-size: clamp(42px, 6.6vw, 96px); line-height: 1.15; white-space: nowrap; color: transparent; -webkit-text-stroke: 1.4px rgba(84,87,79,.85); transition: color .35s, -webkit-text-stroke .35s;" style-hover="color: #EA6330; -webkit-text-stroke: 1.4px #EA6330;">salud</span><svg width="24" height="24" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg>
+          <span data-hover style="font-family: Fredoka, sans-serif; font-weight: 600; font-size: clamp(42px, 6.6vw, 96px); line-height: 1.15; white-space: nowrap; color: transparent; -webkit-text-stroke: 1.4px rgba(84,87,79,.85); transition: color .35s, -webkit-text-stroke .35s;" style-hover="color: #EA6330; -webkit-text-stroke: 1.4px #EA6330;">belleza</span><svg width="24" height="24" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg>
+          <span data-hover style="font-family: Fredoka, sans-serif; font-weight: 600; font-size: clamp(42px, 6.6vw, 96px); line-height: 1.15; white-space: nowrap; color: transparent; -webkit-text-stroke: 1.4px rgba(84,87,79,.85); transition: color .35s, -webkit-text-stroke .35s;" style-hover="color: #EA6330; -webkit-text-stroke: 1.4px #EA6330;">gastronom&iacute;a</span><svg width="24" height="24" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg>
+        </div>
+        <div style="display: inline-flex; align-items: center; gap: 44px; padding-right: 44px;">
+          <span data-hover style="font-family: Fredoka, sans-serif; font-weight: 600; font-size: clamp(42px, 6.6vw, 96px); line-height: 1.15; white-space: nowrap; color: transparent; -webkit-text-stroke: 1.4px rgba(84,87,79,.85); transition: color .35s, -webkit-text-stroke .35s;" style-hover="color: #EA6330; -webkit-text-stroke: 1.4px #EA6330;">consumo masivo</span><svg width="24" height="24" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg>
+          <span data-hover style="font-family: Fredoka, sans-serif; font-weight: 600; font-size: clamp(42px, 6.6vw, 96px); line-height: 1.15; white-space: nowrap; color: transparent; -webkit-text-stroke: 1.4px rgba(84,87,79,.85); transition: color .35s, -webkit-text-stroke .35s;" style-hover="color: #EA6330; -webkit-text-stroke: 1.4px #EA6330;">bienestar</span><svg width="24" height="24" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg>
+          <span data-hover style="font-family: Fredoka, sans-serif; font-weight: 600; font-size: clamp(42px, 6.6vw, 96px); line-height: 1.15; white-space: nowrap; color: transparent; -webkit-text-stroke: 1.4px rgba(84,87,79,.85); transition: color .35s, -webkit-text-stroke .35s;" style-hover="color: #EA6330; -webkit-text-stroke: 1.4px #EA6330;">salud</span><svg width="24" height="24" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg>
+          <span data-hover style="font-family: Fredoka, sans-serif; font-weight: 600; font-size: clamp(42px, 6.6vw, 96px); line-height: 1.15; white-space: nowrap; color: transparent; -webkit-text-stroke: 1.4px rgba(84,87,79,.85); transition: color .35s, -webkit-text-stroke .35s;" style-hover="color: #EA6330; -webkit-text-stroke: 1.4px #EA6330;">belleza</span><svg width="24" height="24" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg>
+          <span data-hover style="font-family: Fredoka, sans-serif; font-weight: 600; font-size: clamp(42px, 6.6vw, 96px); line-height: 1.15; white-space: nowrap; color: transparent; -webkit-text-stroke: 1.4px rgba(84,87,79,.85); transition: color .35s, -webkit-text-stroke .35s;" style-hover="color: #EA6330; -webkit-text-stroke: 1.4px #EA6330;">gastronom&iacute;a</span><svg width="24" height="24" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg>
+        </div>
+      </div>
+    </div>
+    <div data-skew style="border-bottom: 1px solid rgba(84,87,79,.18); padding: 26px 0 30px; overflow: hidden; display: flex; will-change: transform;">
+      <div data-marquee-track data-mfactor="1.9" style="flex: none; display: inline-flex; align-items: center; width: max-content; animation: omMarquee 49s linear infinite; animation-direction: reverse; will-change: transform;">
+        <div style="display: inline-flex; align-items: center; gap: 44px; padding-right: 44px;">
+          <span data-hover style="font-family: Fredoka, sans-serif; font-weight: 600; font-size: clamp(42px, 6.6vw, 96px); line-height: 1.15; white-space: nowrap; color: transparent; -webkit-text-stroke: 1.4px rgba(84,87,79,.85); transition: color .35s, -webkit-text-stroke .35s;" style-hover="color: #EA6330; -webkit-text-stroke: 1.4px #EA6330;">aviaci&oacute;n privada</span><svg width="24" height="24" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg>
+          <span data-hover style="font-family: Fredoka, sans-serif; font-weight: 600; font-size: clamp(42px, 6.6vw, 96px); line-height: 1.15; white-space: nowrap; color: transparent; -webkit-text-stroke: 1.4px rgba(84,87,79,.85); transition: color .35s, -webkit-text-stroke .35s;" style-hover="color: #EA6330; -webkit-text-stroke: 1.4px #EA6330;">deporte de alto rendimiento</span><svg width="24" height="24" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg>
+          <span data-hover style="font-family: Fredoka, sans-serif; font-weight: 600; font-size: clamp(42px, 6.6vw, 96px); line-height: 1.15; white-space: nowrap; color: transparent; -webkit-text-stroke: 1.4px rgba(84,87,79,.85); transition: color .35s, -webkit-text-stroke .35s;" style-hover="color: #EA6330; -webkit-text-stroke: 1.4px #EA6330;">tecnolog&iacute;a</span><svg width="24" height="24" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg>
+          <span data-hover style="font-family: Fredoka, sans-serif; font-weight: 600; font-size: clamp(42px, 6.6vw, 96px); line-height: 1.15; white-space: nowrap; color: transparent; -webkit-text-stroke: 1.4px rgba(84,87,79,.85); transition: color .35s, -webkit-text-stroke .35s;" style-hover="color: #EA6330; -webkit-text-stroke: 1.4px #EA6330;">retail</span><svg width="24" height="24" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg>
+        </div>
+        <div style="display: inline-flex; align-items: center; gap: 44px; padding-right: 44px;">
+          <span data-hover style="font-family: Fredoka, sans-serif; font-weight: 600; font-size: clamp(42px, 6.6vw, 96px); line-height: 1.15; white-space: nowrap; color: transparent; -webkit-text-stroke: 1.4px rgba(84,87,79,.85); transition: color .35s, -webkit-text-stroke .35s;" style-hover="color: #EA6330; -webkit-text-stroke: 1.4px #EA6330;">aviaci&oacute;n privada</span><svg width="24" height="24" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg>
+          <span data-hover style="font-family: Fredoka, sans-serif; font-weight: 600; font-size: clamp(42px, 6.6vw, 96px); line-height: 1.15; white-space: nowrap; color: transparent; -webkit-text-stroke: 1.4px rgba(84,87,79,.85); transition: color .35s, -webkit-text-stroke .35s;" style-hover="color: #EA6330; -webkit-text-stroke: 1.4px #EA6330;">deporte de alto rendimiento</span><svg width="24" height="24" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg>
+          <span data-hover style="font-family: Fredoka, sans-serif; font-weight: 600; font-size: clamp(42px, 6.6vw, 96px); line-height: 1.15; white-space: nowrap; color: transparent; -webkit-text-stroke: 1.4px rgba(84,87,79,.85); transition: color .35s, -webkit-text-stroke .35s;" style-hover="color: #EA6330; -webkit-text-stroke: 1.4px #EA6330;">tecnolog&iacute;a</span><svg width="24" height="24" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg>
+          <span data-hover style="font-family: Fredoka, sans-serif; font-weight: 600; font-size: clamp(42px, 6.6vw, 96px); line-height: 1.15; white-space: nowrap; color: transparent; -webkit-text-stroke: 1.4px rgba(84,87,79,.85); transition: color .35s, -webkit-text-stroke .35s;" style-hover="color: #EA6330; -webkit-text-stroke: 1.4px #EA6330;">retail</span><svg width="24" height="24" viewBox="0 0 24 24" style="flex: none;"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg>
+        </div>
+      </div>
+    </div>
+    <div style="max-width: 1280px; margin: 0 auto; padding: 0 clamp(20px, 4.5vw, 64px); box-sizing: border-box;">
+      <p data-reveal style="margin: clamp(40px, 6vh, 56px) 0 0; max-width: 560px; font-size: 16.5px; line-height: 1.75; color: #6D7065;">Esta diversidad nos permiti&oacute; adquirir una visi&oacute;n estrat&eacute;gica adaptable a distintos mercados y p&uacute;blicos.</p>
+    </div>
+  </section>
+
+  <section data-screen-label="Manifiesto" style="background: #43463F; color: #F6EFE9; position: relative; overflow: hidden; padding: clamp(100px, 16vh, 170px) clamp(20px, 4.5vw, 64px);">
+    <div data-plx="-0.06" style="position: absolute; right: 4%; top: 10%; will-change: transform;">
+      <svg data-draw data-drawdur="1.6" width="clamp(100px, 14vw, 180px)" viewBox="0 0 48 48" fill="none" style="display: block; width: clamp(100px, 14vw, 180px); height: auto; animation: omSpin 46s linear infinite; transform-origin: 50% 50%;"><g stroke="#EA6330" stroke-width="2.4" stroke-linecap="round"><line x1="24" y1="1.5" x2="24" y2="46.5" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1;"></line><line x1="1.5" y1="24" x2="46.5" y2="24" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1;"></line><line x1="33.2" y1="14.8" x2="14.8" y2="33.2" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1;"></line><line x1="14.8" y1="14.8" x2="33.2" y2="33.2" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1;"></line></g></svg>
+    </div>
+    <div style="max-width: 1280px; margin: 0 auto; position: relative;">
+      <div data-reveal style="display: flex; align-items: center; gap: 10px;">
+        <svg width="12" height="12" viewBox="0 0 24 24"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg>
+        <span style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .22em; color: rgba(246,239,233,.55);">MANIFIESTO</span>
+      </div>
+      <p data-words style="margin: 40px 0 0; max-width: 1000px; font-family: Fredoka, sans-serif; font-weight: 500; font-size: clamp(27px, 3.9vw, 58px); line-height: 1.16; letter-spacing: -.01em; text-wrap: pretty;">M&aacute;s que generar contenido, buscamos construir marcas s&oacute;lidas, coherentes y memorables.</p>
+      <svg data-draw data-drawdur="1.4" width="100%" height="2" viewBox="0 0 100 2" preserveAspectRatio="none" fill="none" style="display: block; margin-top: clamp(40px, 6vh, 64px); width: 100%;"><path d="M0 1 L100 1" stroke="rgba(246,239,233,.3)" stroke-width="2" pathLength="1" style="stroke-dasharray: 1; stroke-dashoffset: 1;"></path></svg>
+      <p data-reveal style="margin: clamp(36px, 5vh, 52px) 0 0; max-width: 640px; font-size: 17px; line-height: 1.75; color: rgba(246,239,233,.68);">Nuestro objetivo es que cada cliente cuente con una estrategia de comunicaci&oacute;n alineada con su negocio, capaz de diferenciarlo en un mercado cada vez m&aacute;s competitivo.</p>
+    </div>
+  </section>
+
+  <section id="contacto" data-screen-label="Contacto" style="position: relative; overflow: hidden; padding: clamp(90px, 14vh, 150px) clamp(20px, 4.5vw, 64px) 0;">
+    <div data-plx="0.05" style="position: absolute; right: 3%; top: 6%; will-change: transform; opacity: .3;">
+      <img src="assets/oushy-outline.png" alt="" style="display: block; width: clamp(280px, 32vw, 540px); height: auto;">
+    </div>
+    <div style="max-width: 1280px; margin: 0 auto; position: relative;">
+      <div data-reveal style="display: flex; align-items: center; gap: 10px;">
+        <svg width="12" height="12" viewBox="0 0 24 24"><path d="M12 0Q12.5 10.8 16.6 7.4Q13.2 11.5 24 12Q13.2 12.5 16.6 16.6Q12.5 13.2 12 24Q11.5 13.2 7.4 16.6Q10.8 12.5 0 12Q10.8 11.5 7.4 7.4Q11.5 10.8 12 0Z" fill="#EA6330"></path></svg>
+        <span style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .22em; color: #8B8E82;">05 &middot; CONTACTO</span>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 48px clamp(40px, 5vw, 90px); align-items: flex-end; justify-content: space-between; margin-top: 36px;">
+        <div style="position: relative; min-width: min(100%, 320px);">
+          <h2 data-reveal="clip" style="margin: 0; font-family: Fredoka, sans-serif; font-weight: 600; font-size: clamp(56px, 9.5vw, 150px); line-height: .95; letter-spacing: -.02em; white-space: nowrap;">trabajemos</h2>
+          <span data-reveal data-delay=".2" style="display: inline-block; margin-top: 8px; font-family: 'Homemade Apple', cursive; font-size: clamp(34px, 5.6vw, 84px); color: #EA6330; transform: rotate(-4deg);">juntos</span>
+        </div>
+        <div style="min-width: min(100%, 320px); max-width: 560px; flex: 1;">
+          <p data-reveal style="margin: 0; max-width: 520px; font-size: 16.5px; line-height: 1.78; color: #6D7065;">En OUSHY Studio entendemos el marketing como una herramienta de crecimiento. Nos involucramos en cada proyecto como parte del equipo de nuestros clientes, aportando creatividad, an&aacute;lisis y una ejecuci&oacute;n cuidada en cada detalle.</p>
+          <div data-reveal data-delay=".12" style="display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin-top: 34px;">
+            <a href="https://www.instagram.com/oushystudio/" target="_blank" rel="noopener" data-hover data-magnet style="font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: .14em; background: #54574F; color: #F6EFE9; border-radius: 999px; padding: 19px 34px; transition: background .35s;" style-hover="background: #EA6330; color: #F6EFE9;">INICIAR PROYECTO &#8599;</a>
+            <a href="https://www.instagram.com/oushystudio/" target="_blank" rel="noopener" data-hover style="font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: .14em; color: #54574F; border-bottom: 1.4px solid #EA6330; padding-bottom: 4px;" style-hover="color: #EA6330;">@OUSHYSTUDIO</a>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: clamp(70px, 11vh, 120px); border-top: 1px solid rgba(84,87,79,.18); padding: 22px 0 26px; display: flex; flex-wrap: wrap; gap: 16px 32px; justify-content: space-between; align-items: center; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: .18em; color: #8B8E82;">
+        <span>&copy; OUSHY STUDIO &mdash; 2026</span>
+        <img src="assets/oushy-wordmark.png" alt="oushy studio" style="height: 44px; width: auto; display: block;">
+        <span>ARG &#9656; WORKING GLOBALLY</span>
+      </div>
+    </div>
+  </section>
+
+  <sc-if value="{{ grano }}" hint-placeholder-val="{{ true }}">
+    <div style="position: fixed; inset: 0; z-index: 150; pointer-events: none; opacity: .05; mix-blend-mode: multiply; background: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E&quot;);"></div>
+  </sc-if>
+
+  <div data-cursor-dot style="position: fixed; top: 0; left: 0; width: 8px; height: 8px; border-radius: 50%; background: #EA6330; z-index: 300; pointer-events: none; transform: translate(-100px, -100px); display: none;"></div>
+  <div data-cursor-ring style="position: fixed; top: 0; left: 0; width: 36px; height: 36px; border-radius: 50%; border: 1.2px solid rgba(84,87,79,.5); z-index: 299; pointer-events: none; transform: translate(-100px, -100px); display: none; transition: width .25s, height .25s, border-color .25s, background .25s;"></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;introPreloader&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Acabado&quot; },
+  &quot;granoPapel&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Acabado&quot; },
+  &quot;cursorCustom&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Acabado&quot; },
+  &quot;velocidadMarquee&quot;: { &quot;editor&quot;: &quot;range&quot;, &quot;default&quot;: 26, &quot;min&quot;: 10, &quot;max&quot;: 60, &quot;step&quot;: 1, &quot;unit&quot;: &quot;s&quot;, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Animación&quot; }
+}">
+class Component extends DCLogic {
+  constructor(p) {
+    super(p);
+    this.root = React.createRef();
+    this._c = [];
+    this._ringSize = 36;
+  }
+  componentDidMount() {
+    const root = this.root.current;
+    if (!root) return;
+    this._fine = window.matchMedia && matchMedia('(pointer:fine)').matches;
+    this._setupReveals(root);
+    this._setupDraws(root);
+    this._setupWords(root);
+    this._setupCursor(root);
+    this._setupAnchors(root);
+    this._setupMagnets(root);
+    this._collect(root);
+    this._applyMarquee(root);
+    this._preTimer = setTimeout(() => {
+      const p = root.querySelector('[data-preloader]');
+      if (p) p.style.display = 'none';
+    }, 2600);
+    this._c.push(() => clearTimeout(this._preTimer));
+    this._loop = this._loop.bind(this);
+    this._raf = requestAnimationFrame(this._loop);
+  }
+  componentDidUpdate() {
+    const root = this.root.current;
+    if (root) { this._applyMarquee(root); this._applyCursor(root); }
+  }
+  componentWillUnmount() {
+    cancelAnimationFrame(this._raf);
+    this._c.forEach(f => { try { f(); } catch (e) {} });
+  }
+  _on(t, ev, fn, opt) {
+    t.addEventListener(ev, fn, opt);
+    this._c.push(() => t.removeEventListener(ev, fn, opt));
+  }
+  _setupReveals(root) {
+    const io = new IntersectionObserver(ents => {
+      ents.forEach(en => {
+        if (!en.isIntersecting) return;
+        const el = en.target;
+        const d = parseFloat(el.dataset.delay || '0');
+        const clip = el.dataset.reveal === 'clip';
+        el.style.transitionProperty = clip ? 'opacity, transform, clip-path' : 'opacity, transform';
+        el.style.transitionDuration = clip ? '.9s, 1.1s, 1.1s' : '1s, 1.15s';
+        el.style.transitionTimingFunction = 'cubic-bezier(.22,1,.36,1)';
+        el.style.transitionDelay = d + 's';
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+        if (clip) el.style.clipPath = 'inset(-12% -6% -14% -6%)';
+        io.unobserve(el);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -5% 0px' });
+    this._clipEls = [];
+    root.querySelectorAll('[data-reveal]').forEach(el => {
+      const clip = el.dataset.reveal === 'clip';
+      el.style.opacity = clip ? '1' : '0';
+      el.style.transform = clip ? 'translateY(55%)' : 'translateY(30px)';
+      if (clip) el.style.clipPath = 'inset(0 -6% 100% -6%)';
+      el.style.willChange = 'opacity, transform';
+      if (clip) this._clipEls.push(el);
+      else io.observe(el);
+    });
+    this._c.push(() => io.disconnect());
+  }
+  _setupDraws(root) {
+    const io = new IntersectionObserver(ents => {
+      ents.forEach(en => {
+        if (!en.isIntersecting) return;
+        const svg = en.target;
+        const dur = parseFloat(svg.dataset.drawdur || '1.3');
+        const delay = parseFloat(svg.dataset.drawdelay || '0.1');
+        svg.querySelectorAll('path,line,circle,rect,polyline,ellipse').forEach((s, i) => {
+          if (s.getAttribute('pathLength') !== '1') return;
+          s.style.transition = 'stroke-dashoffset ' + dur + 's cubic-bezier(.65,0,.35,1) ' + (delay + i * 0.18) + 's';
+          s.style.strokeDashoffset = '0';
+        });
+        io.unobserve(svg);
+      });
+    }, { threshold: 0.35 });
+    root.querySelectorAll('[data-draw]').forEach(s => io.observe(s));
+    this._c.push(() => io.disconnect());
+  }
+  _setupWords(root) {
+    this._wordEls = [];
+    const esc = w => w.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+    root.querySelectorAll('[data-words]').forEach(el => {
+      if (!el.dataset.splitDone) {
+        const words = el.textContent.trim().split(/\s+/);
+        el.innerHTML = words.map(w => '<span style="opacity:.13;transition:opacity .3s linear">' + esc(w) + '</span>').join(' ');
+        el.dataset.splitDone = '1';
+      }
+      this._wordEls.push({ el, spans: Array.from(el.querySelectorAll('span')), lit: -1 });
+    });
+  }
+  _setupCursor(root) {
+    this._dot = root.querySelector('[data-cursor-dot]');
+    this._ring = root.querySelector('[data-cursor-ring]');
+    this._mx = -100; this._my = -100; this._rx = -100; this._ry = -100;
+    this._hovering = false;
+    this._on(window, 'mousemove', e => { this._mx = e.clientX; this._my = e.clientY; });
+    this._on(root, 'mouseover', e => {
+      const h = e.target.closest && e.target.closest('[data-hover]');
+      const now = !!h;
+      if (now === this._hovering) return;
+      this._hovering = now;
+      const r = this._ring;
+      if (!r) return;
+      this._ringSize = now ? 62 : 36;
+      r.style.width = this._ringSize + 'px';
+      r.style.height = this._ringSize + 'px';
+      r.style.borderColor = now ? '#EA6330' : 'rgba(84,87,79,.5)';
+      r.style.background = now ? 'rgba(234,99,48,.07)' : 'transparent';
+    });
+    this._applyCursor(root);
+  }
+  _applyCursor(root) {
+    const on = (this.props.cursorCustom ?? true) && this._fine;
+    if (this._dot) this._dot.style.display = on ? 'block' : 'none';
+    if (this._ring) this._ring.style.display = on ? 'block' : 'none';
+    if (on) root.setAttribute('data-oushy-cursor', '');
+    else root.removeAttribute('data-oushy-cursor');
+  }
+  _setupAnchors(root) {
+    this._on(root, 'click', e => {
+      const a = e.target.closest && e.target.closest('a[href^="#"]');
+      if (!a) return;
+      const id = a.getAttribute('href').slice(1);
+      const t = id && document.getElementById(id);
+      e.preventDefault();
+      const y = t ? t.getBoundingClientRect().top + window.scrollY - 68 : 0;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    });
+  }
+  _setupMagnets(root) {
+    if (!this._fine) return;
+    root.querySelectorAll('[data-magnet]').forEach(el => {
+      el.style.display = el.style.display || 'inline-block';
+      el.style.willChange = 'transform';
+      this._on(el, 'mousemove', e => {
+        const r = el.getBoundingClientRect();
+        const dx = (e.clientX - r.left - r.width / 2) * 0.24;
+        const dy = (e.clientY - r.top - r.height / 2) * 0.34;
+        el.style.transition = 'transform .12s linear';
+        el.style.transform = 'translate(' + Math.max(-11, Math.min(11, dx)).toFixed(1) + 'px,' + Math.max(-8, Math.min(8, dy)).toFixed(1) + 'px)';
+      });
+      this._on(el, 'mouseleave', () => {
+        el.style.transition = 'transform .55s cubic-bezier(.22,1,.36,1)';
+        el.style.transform = 'translate(0,0)';
+      });
+    });
+  }
+  _collect(root) {
+    this._nav = root.querySelector('[data-nav]');
+    this._navSc = null;
+    this._plx = Array.from(root.querySelectorAll('[data-plx]')).map(el => ({ el, sp: parseFloat(el.dataset.plx || '0.05'), cur: 0 }));
+    this._skews = Array.from(root.querySelectorAll('[data-skew]')).map(el => ({ el, cur: 0 }));
+    this._lastY = window.scrollY;
+    this._proc = root.querySelector('[data-process]');
+    this._procPath = root.querySelector('[data-process-path]');
+    this._procStar = root.querySelector('[data-process-star]');
+    this._procNodes = Array.from(root.querySelectorAll('[data-process-node]'));
+    this._procNodes.forEach(n => {
+      n.style.transition = 'opacity .5s ease, transform .7s cubic-bezier(.22,1,.36,1), border-color .5s';
+      n.style.opacity = '.2';
+      n.style.transform = 'scale(.82)';
+      n._on = false;
+    });
+    this._procP = 0;
+  }
+  _applyMarquee(root) {
+    const base = this.props.velocidadMarquee ?? 26;
+    root.querySelectorAll('[data-marquee-track]').forEach(t => {
+      const f = parseFloat(t.dataset.mfactor || '1');
+      t.style.animationDuration = (base * f) + 's';
+    });
+  }
+  _loop() {
+    const vh = window.innerHeight;
+    if (this._nav) {
+      const sc = window.scrollY > 28;
+      if (sc !== this._navSc) {
+        this._navSc = sc;
+        const n = this._nav;
+        n.style.background = sc ? 'rgba(246,239,233,.88)' : 'transparent';
+        n.style.backdropFilter = sc ? 'blur(14px) saturate(1.15)' : 'none';
+        n.style.webkitBackdropFilter = n.style.backdropFilter;
+        n.style.borderBottomColor = sc ? 'rgba(84,87,79,.12)' : 'transparent';
+      }
+    }
+    const y = window.scrollY;
+    const vel = y - this._lastY;
+    this._lastY = y;
+    if (this._skews) this._skews.forEach(o => {
+      const target = Math.max(-5, Math.min(5, vel * 0.35));
+      o.cur += (target - o.cur) * 0.1;
+      if (Math.abs(o.cur) < 0.02 && target === 0) { if (o.el._sk !== 0) { o.el.style.transform = 'skewX(0deg)'; o.el._sk = 0; } return; }
+      o.el.style.transform = 'skewX(' + o.cur.toFixed(2) + 'deg)';
+      o.el._sk = o.cur;
+    });
+    if (this._dot) {
+      this._dot.style.transform = 'translate(' + (this._mx - 4) + 'px,' + (this._my - 4) + 'px)';
+      this._rx += (this._mx - this._rx) * 0.16;
+      this._ry += (this._my - this._ry) * 0.16;
+      const s = this._ringSize / 2;
+      this._ring.style.transform = 'translate(' + (this._rx - s) + 'px,' + (this._ry - s) + 'px)';
+    }
+    if (this._clipEls) for (const el of this._clipEls) {
+      if (el._rv) continue;
+      const r = el.getBoundingClientRect();
+      if (r.top < vh * 0.88 && r.bottom > 0) {
+        el._rv = true;
+        el.style.transitionProperty = 'opacity, transform, clip-path';
+        el.style.transitionDuration = '.9s, 1.1s, 1.1s';
+        el.style.transitionTimingFunction = 'cubic-bezier(.22,1,.36,1)';
+        el.style.transitionDelay = (el.dataset.delay || '0') + 's';
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+        el.style.clipPath = 'inset(-12% -6% -14% -6%)';
+      }
+    }
+    if (this._wordEls) this._wordEls.forEach(w => {
+      const r = w.el.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > vh) return;
+      const p = Math.min(1, Math.max(0, (vh * 0.9 - r.top) / (r.height + vh * 0.45)));
+      const lit = Math.round(p * w.spans.length + 0.0001);
+      if (w.lit !== lit) {
+        w.lit = lit;
+        w.spans.forEach((s, i) => { s.style.opacity = i < lit ? '1' : '0.13'; });
+      }
+    });
+    if (this._plx) this._plx.forEach(o => {
+      const r = o.el.getBoundingClientRect();
+      if (r.bottom < -300 || r.top > vh + 300) return;
+      const rawTop = r.top - o.cur;
+      const target = (rawTop + r.height / 2 - vh / 2) * o.sp;
+      o.cur += (target - o.cur) * 0.1;
+      o.el.style.transform = 'translate3d(0,' + o.cur.toFixed(2) + 'px,0)';
+    });
+    if (this._proc && this._procPath) {
+      const r = this._proc.getBoundingClientRect();
+      const p = Math.min(1, Math.max(0, (vh * 0.85 - r.top) / (r.height * 0.95)));
+      this._procP += (p - this._procP) * 0.09;
+      const v = this._procP;
+      this._procPath.style.strokeDashoffset = String(Math.max(0, 1 - v));
+      const n = this._procNodes.length;
+      this._procNodes.forEach((node, i) => {
+        const on = v > (i + 0.45) / n;
+        if (on !== node._on) {
+          node._on = on;
+          node.style.opacity = on ? '1' : '.2';
+          node.style.transform = on ? 'scale(1)' : 'scale(.82)';
+          node.style.borderColor = on ? '#EA6330' : '#54574F';
+        }
+      });
+      if (this._procStar) {
+        const on = v > 0.93;
+        if (on !== this._starOn) {
+          this._starOn = on;
+          this._procStar.style.opacity = on ? '1' : '0';
+          this._procStar.style.transform = on ? 'scale(1) rotate(0deg)' : 'scale(.4) rotate(-90deg)';
+        }
+      }
+    }
+    this._raf = requestAnimationFrame(this._loop);
+  }
+  renderVals() {
+    return {
+      rootRef: this.root,
+      grano: this.props.granoPapel ?? true,
+      intro: this.props.introPreloader ?? true
+    };
+  }
+}
+</script>
+</body>
+</html>
