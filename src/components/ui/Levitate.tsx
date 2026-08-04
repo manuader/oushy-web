@@ -13,6 +13,12 @@ interface LevitateProps {
   sway?: number;
   /** How far the opacity dips at the bottom of the drift, 0–1. */
   breath?: number;
+  /**
+   * Seconds to advance the cycle by at mount. Give sibling elements different
+   * values and they stop drifting in lockstep, which is the difference between
+   * a set of objects floating and a row of things bobbing on a timer.
+   */
+  phase?: number;
   className?: string;
 }
 
@@ -32,11 +38,14 @@ export function Levitate({
   tilt = 0,
   sway = 0,
   breath = 0,
+  phase = 0,
   className,
 }: LevitateProps) {
   const driftStyle = {
     "--levitate-distance": `${distance}px`,
     animation: `levitate ${duration}s var(--ease-float) infinite alternate`,
+    // A negative delay starts the animation already in progress.
+    animationDelay: `${-phase}s`,
   } as CSSProperties;
 
   const swayStyle = {
@@ -48,6 +57,8 @@ export function Levitate({
     // on the intended tilt instead of snapping back to square.
     rotate: `${tilt}deg`,
     animation: `sway ${(duration * 1.31).toFixed(2)}s var(--ease-float) infinite alternate`,
+    // Offset from the drift's phase so the two layers stay decorrelated.
+    animationDelay: `${-(phase * 0.63)}s`,
   } as CSSProperties;
 
   return (

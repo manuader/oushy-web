@@ -202,18 +202,31 @@
     display: none;
   }
 
-  /* Stroked display type used by the industries marquee. */
+  /* Stroked display type used by the industries marquee.
+
+     `-webkit-text-stroke` centres the stroke on the glyph outline, so half of
+     it lands *inside* the letter. Against a transparent fill that inner half is
+     visible, and every place two contours run close reads as a doubled line.
+
+     `paint-order: stroke fill` puts the stroke underneath the glyph, leaving
+     only its outer half showing and giving the letters an opaque interior that
+     occludes anything behind them. The stroke width is doubled so the visible
+     outer half keeps the original 1.4px weight.
+
+     The fill is the page background rather than white: the letters still read
+     as hollow outlines, but they are opaque, so nothing shows through them. */
   .text-stroke {
-    color: transparent;
-    -webkit-text-stroke: 1.4px rgb(84 87 79 / 0.85);
+    color: var(--color-cream);
+    -webkit-text-stroke: 2.8px rgb(84 87 79 / 0.85);
+    paint-order: stroke fill;
     transition:
       color 0.35s,
-      -webkit-text-stroke 0.35s;
+      -webkit-text-stroke-color 0.35s;
   }
 
   .text-stroke:hover {
     color: var(--color-accent);
-    -webkit-text-stroke: 1.4px var(--color-accent);
+    -webkit-text-stroke-color: var(--color-accent);
   }
 
   /* `pathLength="1"` is the opt-in marker for drawn strokes: normalising every

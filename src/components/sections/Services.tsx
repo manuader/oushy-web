@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { HandwrittenNote } from "@/components/ui/HandwrittenNote";
+import { Levitate } from "@/components/ui/Levitate";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Star } from "@/components/ui/Star";
@@ -12,14 +13,13 @@ import { clsx } from "@/lib/clsx";
 const ROW_GRID =
   "flex flex-col gap-5 lg:grid lg:grid-cols-[clamp(44px,5vw,80px)_1.05fr_1fr_clamp(64px,8vw,104px)] lg:items-start lg:gap-[clamp(18px,3vw,44px)]";
 
-function ServiceRow({ service, isLast }: { service: Service; isLast: boolean }) {
+function ServiceRow({ service, index }: { service: Service; index: number }) {
   return (
     <div
       data-hover
       className={clsx(
         ROW_GRID,
         "relative border-t border-rule py-11 transition-transform duration-500 ease-[var(--ease-out-expo)] hover:translate-x-2.5",
-        isLast && "border-b",
       )}
     >
       <span className="font-mono text-[13px] text-accent">({service.index})</span>
@@ -40,12 +40,24 @@ function ServiceRow({ service, isLast }: { service: Service; isLast: boolean }) 
         ))}
       </Reveal>
 
-      <Image
-        {...sized(serviceIcons[service.icon], 256)}
-        alt=""
-        aria-hidden="true"
-        className="w-full max-w-[116px] justify-self-end"
-      />
+      {/* Each icon floats on its own clock: the period grows down the list and
+          every one starts at a different point in its cycle, so the column
+          never reads as four things bobbing in time. */}
+      <Levitate
+        distance={-9}
+        duration={4.2 + index * 0.37}
+        sway={1.6}
+        breath={0.1}
+        phase={index * 1.45}
+        className="w-full max-w-[74px] justify-self-end"
+      >
+        <Image
+          {...sized(serviceIcons[service.icon], 256)}
+          alt=""
+          aria-hidden="true"
+          className="block w-full"
+        />
+      </Levitate>
     </div>
   );
 }
@@ -93,11 +105,7 @@ export function Services() {
 
         <div className="mt-[clamp(44px,7vh,70px)]">
           {services.map((service, index) => (
-            <ServiceRow
-              key={service.index}
-              service={service}
-              isLast={index === services.length - 1}
-            />
+            <ServiceRow key={service.index} service={service} index={index} />
           ))}
         </div>
       </div>
