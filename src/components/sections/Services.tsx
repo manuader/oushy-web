@@ -1,0 +1,88 @@
+import { HandwrittenNote } from "@/components/ui/HandwrittenNote";
+import { Reveal } from "@/components/ui/Reveal";
+import { SectionLabel } from "@/components/ui/SectionLabel";
+import { ServiceIcon } from "@/components/ui/ServiceIcon";
+import { Star } from "@/components/ui/Star";
+import { services, servicesSection, type Service } from "@/content/sections";
+import { sectionIds } from "@/content/site";
+import { clsx } from "@/lib/clsx";
+
+/* Stacked on small screens, four editorial columns from `lg` up. */
+const ROW_GRID =
+  "flex flex-col gap-5 lg:grid lg:grid-cols-[clamp(44px,5vw,80px)_1.05fr_1fr_clamp(64px,8vw,104px)] lg:items-start lg:gap-[clamp(18px,3vw,44px)]";
+
+function ServiceRow({ service, isLast }: { service: Service; isLast: boolean }) {
+  return (
+    <div
+      data-hover
+      className={clsx(
+        ROW_GRID,
+        "relative border-t border-rule py-11 transition-transform duration-500 ease-[var(--ease-out-expo)] hover:translate-x-2.5",
+        isLast && "border-b",
+      )}
+    >
+      <span className="font-mono text-[13px] text-accent">({service.index})</span>
+
+      <Reveal
+        as="h3"
+        className="m-0 font-display text-[clamp(28px,3.4vw,50px)] font-semibold leading-none tracking-[-.01em]"
+      >
+        {service.title}
+      </Reveal>
+
+      <Reveal delay={0.1} as="ul" className="m-0 flex list-none flex-col gap-3 p-0">
+        {service.items.map((item) => (
+          <li key={item} className="flex items-start gap-2.5">
+            <Star size={10} className="mt-1.5" />
+            <span className="text-[15.5px] leading-[1.5] text-ink-softer">{item}</span>
+          </li>
+        ))}
+      </Reveal>
+
+      <ServiceIcon name={service.icon} />
+    </div>
+  );
+}
+
+/** The four service pillars, one editorial row each. */
+export function Services() {
+  return (
+    <section
+      id={sectionIds.services}
+      aria-labelledby="servicios-heading"
+      className="border-t border-rule px-[clamp(20px,4.5vw,64px)] pb-[clamp(90px,13vh,140px)] pt-[clamp(80px,12vh,130px)]"
+    >
+      <div className="mx-auto max-w-[1280px]">
+        <SectionLabel index={servicesSection.index} label={servicesSection.label} />
+
+        <div className="mt-[30px] flex flex-wrap items-end justify-between gap-x-10 gap-y-6">
+          <Reveal
+            as="h2"
+            variant="clip"
+            id="servicios-heading"
+            className="m-0 font-display text-[clamp(52px,8vw,122px)] font-semibold leading-[.95] tracking-[-.015em]"
+          >
+            {servicesSection.title}{" "}
+            <Star size="clamp(26px, 3.5vw, 52px)" className="inline-block align-[.06em]" />
+          </Reveal>
+
+          <Reveal delay={0.15}>
+            <HandwrittenNote variant="circle" rotate={-3}>
+              {servicesSection.note}
+            </HandwrittenNote>
+          </Reveal>
+        </div>
+
+        <div className="mt-[clamp(44px,7vh,70px)]">
+          {services.map((service, index) => (
+            <ServiceRow
+              key={service.index}
+              service={service}
+              isLast={index === services.length - 1}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
