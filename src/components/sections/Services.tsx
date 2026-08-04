@@ -49,10 +49,10 @@ function ServiceRow({ service, index }: { service: Service; index: number }) {
         sway={1.6}
         breath={0.1}
         phase={index * 1.45}
-        className="w-full max-w-[74px] justify-self-end"
+        className="w-full max-w-[59px] justify-self-end"
       >
         <Image
-          {...sized(serviceIcons[service.icon], 256)}
+          {...sized(serviceIcons[service.icon], 128)}
           alt=""
           aria-hidden="true"
           className="block w-full"
