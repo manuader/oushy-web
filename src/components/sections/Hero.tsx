@@ -26,7 +26,7 @@ export function Hero() {
         viewBox="0 0 1440 900"
         preserveAspectRatio="none"
         fill="none"
-        className="pointer-events-none absolute inset-0 h-full w-full"
+        className="pointer-events-none absolute inset-0 hidden h-full w-full sm:block"
       >
         <path
           d="M -30 640 C 380 560, 720 340, 1470 110"
@@ -47,7 +47,7 @@ export function Hero() {
       </svg>
 
       <div
-        className="relative flex justify-between gap-5 font-mono text-[11px] tracking-[.2em] text-muted"
+        className="relative flex flex-col gap-1.5 font-mono text-[10px] tracking-[.2em] text-muted sm:flex-row sm:justify-between sm:gap-5 sm:text-[11px]"
         style={{ animation: "fade-up .9s var(--ease-out-expo) 1.55s backwards" }}
       >
         <span>{hero.eyebrow}</span>
@@ -104,7 +104,7 @@ export function Hero() {
         </div>
 
         <div
-          className="flex flex-wrap justify-end gap-3.5"
+          className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:justify-end sm:gap-3.5"
           style={{ animation: "fade-up .9s var(--ease-out-expo) 2.3s backwards" }}
         >
           <PillLink href={contact.whatsapp}>{hero.primaryCta}</PillLink>

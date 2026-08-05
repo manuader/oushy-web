@@ -25,7 +25,7 @@ export function Studio() {
           {...sized(brand.star, 216)}
           alt=""
           aria-hidden="true"
-          className="block h-auto w-[clamp(54px,7vw,108px)]"
+          className="block h-auto w-[clamp(40px,7vw,108px)]"
           style={{ animation: "spin 44s linear infinite" }}
         />
       </div>

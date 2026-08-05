@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { MobileMenu } from "@/components/layout/MobileMenu";
 import { PillLink } from "@/components/ui/PillLink";
 import { useScrolled } from "@/hooks/useScrolled";
 import { contact, navLinks, site } from "@/content/site";
@@ -24,7 +25,15 @@ export function SiteHeader() {
           : "border-transparent bg-transparent",
       )}
     >
-      <a href="#top" data-hover className="flex items-center" aria-label={`${site.name} — inicio`}>
+      {/* The panel is a descendant of this header, so its z-index resolves
+          inside the header's own stacking context. The mark has to be raised
+          here to stay visible above an open panel. */}
+      <a
+        href="#top"
+        data-hover
+        className="relative z-[210] flex items-center"
+        aria-label={`${site.name} — inicio`}
+      >
         <Image
           {...sized(brand.wordmark, 240)}
           alt={site.name}
@@ -47,9 +56,18 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        <PillLink href={contact.whatsapp} variant="outline" size="sm">
-          INICIAR PROYECTO
-        </PillLink>
+        {/* The panel carries this CTA on phones, so the bar keeps just the
+            wordmark and the toggle and nothing has to shrink to fit.
+            The wrapper does the hiding: PillLink already sets `inline-block`,
+            and two display utilities on one element resolve by stylesheet
+            order, not by the order they appear in the attribute. */}
+        <div className="hidden min-[861px]:block">
+          <PillLink href={contact.whatsapp} variant="outline" size="sm">
+            INICIAR PROYECTO
+          </PillLink>
+        </div>
+
+        <MobileMenu />
       </div>
     </header>
   );

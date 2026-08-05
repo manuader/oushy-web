@@ -26,12 +26,12 @@ export function Contact() {
       aria-labelledby="contacto-heading"
       className="relative overflow-x-clip px-[clamp(20px,4.5vw,64px)] pt-[clamp(90px,14vh,150px)]"
     >
-      <div ref={outlineRef} className="absolute right-[3%] top-[6%] opacity-30 will-change-transform">
+      <div ref={outlineRef} className="absolute right-[3%] top-[6%] opacity-[0.18] will-change-transform sm:opacity-30">
         <Image
           {...sized(brand.outline, 541)}
           alt=""
           aria-hidden="true"
-          className="block h-auto w-[clamp(280px,32vw,540px)]"
+          className="block h-auto w-[clamp(190px,32vw,540px)]"
         />
       </div>
 
