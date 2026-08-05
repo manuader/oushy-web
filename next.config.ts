@@ -4,10 +4,13 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
-  // Pin the workspace root so Turbopack ignores stray lockfiles above the repo.
-  turbopack: {
-    root: path.join(__dirname),
-  },
+  // Dev only. A stray package-lock.json above the repo makes Turbopack guess
+  // the wrong workspace root locally; pinning it silences that. On CI the
+  // condition doesn't exist, and baking an absolute path into the build is a
+  // liability rather than a fix.
+  ...(process.env.NODE_ENV === "development"
+    ? { turbopack: { root: path.join(__dirname) } }
+    : {}),
   images: {
     formats: ["image/avif", "image/webp"],
     // Instagram serves media from rotating CDN subdomains, and the exact host
