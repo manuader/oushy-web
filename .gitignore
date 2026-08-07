@@ -9,3 +9,8 @@ build/
 next-env.d.ts
 .vercel
 *.tsbuildinfo
+
+# Feed masters: 115MB of PNG originals that only exist to be re-exported.
+# The site ships the WebP in public/feed/; committing these would triple the
+# repo and git keeps large binaries in history even after a later delete.
+assets-source/feed/

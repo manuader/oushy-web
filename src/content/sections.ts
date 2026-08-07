@@ -161,19 +161,26 @@ export const feedSection = {
 } as const;
 
 export const feedPosts: FeedPost[] = [
-  // Reemplazá cada entrada por una publicación real:
-  //   { id: "verano-25", src: "/feed/verano-25.jpg", alt: "Campaña de verano para …",
-  //     permalink: "https://www.instagram.com/p/XXXXXXXXX/" },
-  { id: "post-01", alt: "Publicación 01 de OUSHY Studio" },
-  { id: "post-02", alt: "Publicación 02 de OUSHY Studio" },
-  { id: "post-03", alt: "Publicación 03 de OUSHY Studio" },
-  { id: "post-04", alt: "Publicación 04 de OUSHY Studio" },
-  { id: "post-05", alt: "Publicación 05 de OUSHY Studio" },
-  { id: "post-06", alt: "Publicación 06 de OUSHY Studio" },
-  { id: "post-07", alt: "Publicación 07 de OUSHY Studio" },
-  { id: "post-08", alt: "Publicación 08 de OUSHY Studio" },
-  { id: "post-09", alt: "Publicación 09 de OUSHY Studio" },
-  { id: "post-10", alt: "Publicación 10 de OUSHY Studio" },
+  // Sequenced to alternate tone and framing — dark then light, close-up then
+  // wide — so scrolling has a rhythm instead of clumping all the food together
+  // and then all the mockups.
+  { id: "horno-pizza", src: "/feed/horno-pizza.webp", alt: "Pizza saliendo del horno a leña" },
+  { id: "grilla-moda", src: "/feed/grilla-moda.webp", alt: "Grilla de feed para una marca de moda" },
+  { id: "cuero-grabado", src: "/feed/cuero-grabado.webp", alt: "Isologo grabado en cuero para una marca ecuestre" },
+  { id: "cartel-fachada", src: "/feed/cartel-fachada.webp", alt: "Cartel de marca en la fachada de un edificio" },
+  { id: "postre-packaging", src: "/feed/postre-packaging.webp", alt: "Postre y packaging de la linea de producto" },
+  { id: "tote-calle", src: "/feed/tote-calle.webp", alt: "Bolsa de tela de la marca fotografiada en la calle" },
+  { id: "haiku-retrato", src: "/feed/haiku-retrato.webp", alt: "Retrato en blanco y negro del cocinero con delantal de Haiku" },
+  { id: "patron-arlequin", src: "/feed/patron-arlequin.webp", alt: "Patron de arlequin con mockups de publicaciones" },
+  { id: "mockup-mobile", src: "/feed/mockup-mobile.webp", alt: "Piezas de campana vistas en mobile" },
+  { id: "vidriera", src: "/feed/vidriera.webp", alt: "Vidriera de local con grafica de marca" },
+  { id: "packaging-bolsa", src: "/feed/packaging-bolsa.webp", alt: "Bolsa y patron del sistema de packaging" },
+  { id: "carta-postres", src: "/feed/carta-postres.webp", alt: "Carta de postres impresa, pieza editorial" },
+  { id: "pizza-pepperoni", src: "/feed/pizza-pepperoni.webp", alt: "Pizza de pepperoni con el logo de Haiku" },
+  { id: "ostras-pieza", src: "/feed/ostras-pieza.webp", alt: "Ostras y pieza grafica sobre la barra" },
+  { id: "montura-bordada", src: "/feed/montura-bordada.webp", alt: "Isologo bordado sobre una montura" },
+  { id: "rebrand-antes-despues", src: "/feed/rebrand-antes-despues.webp", alt: "Antes y despues del rediseno de feed y rebranding" },
+  { id: "mockups-moda", src: "/feed/mockups-moda.webp", alt: "Mockups de publicaciones para una marca de moda" },
 ];
 
 export const contactSection = {

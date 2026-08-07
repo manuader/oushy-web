@@ -12,7 +12,7 @@ import { getInstagramPosts } from "@/lib/instagram";
 const SLIDE = "w-[78%] shrink-0 snap-start sm:w-[46%] lg:w-[30%] xl:w-[23%]";
 
 const TILE =
-  "relative block aspect-[4/5] overflow-hidden rounded-[18px] border border-rule transition-[transform,border-color] duration-500 ease-[var(--ease-out-expo)] hover:-translate-y-1.5 hover:border-accent";
+  "group relative block aspect-[4/5] overflow-hidden rounded-[18px] border border-rule transition-[transform,border-color] duration-500 ease-[var(--ease-out-expo)] hover:-translate-y-1.5 hover:border-accent";
 
 /** Both sources — curated files and the Instagram API — normalise to this. */
 interface Slide {
@@ -23,7 +23,7 @@ interface Slide {
   isVideo?: boolean;
 }
 
-function FeedSlide({ slide }: { slide: Slide }) {
+function FeedSlide({ slide, index }: { slide: Slide; index: number }) {
   // Nothing to link to until the image exists; keep the tile inert.
   if (!slide.src) {
     return (
@@ -46,13 +46,28 @@ function FeedSlide({ slide }: { slide: Slide }) {
         data-hover
         className={TILE}
       >
+        {/* The image is oversized inside a fixed frame so it has room to drift.
+            `translate` carries the carousel parallax and `scale` the hover
+            zoom — separate longhands, so neither clobbers the other. */}
         <Image
           src={slide.src}
           alt={slide.alt}
           fill
           sizes="(max-width: 640px) 78vw, (max-width: 1024px) 46vw, 23vw"
-          className="object-cover"
+          className="object-cover transition-[scale,filter] duration-[900ms] ease-[var(--ease-out-expo)] group-hover:[--feed-scale:1.16]"
+          style={
+            {
+              translate: "var(--feed-shift, 0%) 0",
+              scale: "var(--feed-scale, 1.08)",
+            } as React.CSSProperties
+          }
         />
+
+        {/* Reads the index as an editorial folio, matching the (01) markers
+            on the services rows. */}
+        <span className="pointer-events-none absolute left-4 top-4 font-mono text-[10.5px] tracking-[.18em] text-cream mix-blend-difference">
+          {String(index + 1).padStart(2, "0")}
+        </span>
         {slide.isVideo ? (
           <span
             aria-hidden="true"
@@ -133,8 +148,8 @@ export async function Feed() {
         </Reveal>
 
         <Carousel label="Publicaciones de OUSHY Studio" className="mt-[clamp(36px,6vh,56px)]">
-          {slides.map((slide) => (
-            <FeedSlide key={slide.key} slide={slide} />
+          {slides.map((slide, index) => (
+            <FeedSlide key={slide.key} slide={slide} index={index} />
           ))}
         </Carousel>
 
