@@ -1,87 +1,11 @@
-import Image from "next/image";
-import { Carousel } from "@/components/ui/Carousel";
 import { PillLink } from "@/components/ui/PillLink";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Star } from "@/components/ui/Star";
+import { FeedGallery, type GallerySlide } from "@/components/sections/FeedGallery";
 import { feedPosts, feedSection } from "@/content/sections";
 import { contact, sectionIds } from "@/content/site";
 import { getInstagramPosts } from "@/lib/instagram";
-
-/** Widths are fluid so a partial slide peeks in, hinting the track scrolls. */
-const SLIDE = "w-[78%] shrink-0 snap-start sm:w-[46%] lg:w-[30%] xl:w-[23%]";
-
-const TILE =
-  "group relative block aspect-[4/5] overflow-hidden rounded-[18px] border border-rule transition-[transform,border-color] duration-500 ease-[var(--ease-out-expo)] hover:-translate-y-1.5 hover:border-accent";
-
-/** Both sources — curated files and the Instagram API — normalise to this. */
-interface Slide {
-  key: string;
-  src?: string;
-  alt: string;
-  href: string;
-  isVideo?: boolean;
-}
-
-function FeedSlide({ slide, index }: { slide: Slide; index: number }) {
-  // Nothing to link to until the image exists; keep the tile inert.
-  if (!slide.src) {
-    return (
-      <li className={SLIDE}>
-        <div className={TILE}>
-          <div className="flex size-full items-center justify-center bg-ink/[0.03] p-6 text-center">
-            <span className="font-mono text-[10.5px] tracking-[.18em] text-muted">{slide.alt}</span>
-          </div>
-        </div>
-      </li>
-    );
-  }
-
-  return (
-    <li className={SLIDE}>
-      <a
-        href={slide.href}
-        target="_blank"
-        rel="noopener noreferrer"
-        data-hover
-        className={TILE}
-      >
-        {/* The image is oversized inside a fixed frame so it has room to drift.
-            `translate` carries the carousel parallax and `scale` the hover
-            zoom — separate longhands, so neither clobbers the other. */}
-        <Image
-          src={slide.src}
-          alt={slide.alt}
-          fill
-          sizes="(max-width: 640px) 78vw, (max-width: 1024px) 46vw, 23vw"
-          className="object-cover transition-[scale,filter] duration-[900ms] ease-[var(--ease-out-expo)] group-hover:[--feed-scale:1.16]"
-          style={
-            {
-              translate: "var(--feed-shift, 0%) 0",
-              scale: "var(--feed-scale, 1.08)",
-            } as React.CSSProperties
-          }
-        />
-
-        {/* Reads the index as an editorial folio, matching the (01) markers
-            on the services rows. */}
-        <span className="pointer-events-none absolute left-4 top-4 font-mono text-[10.5px] tracking-[.18em] text-cream mix-blend-difference">
-          {String(index + 1).padStart(2, "0")}
-        </span>
-        {slide.isVideo ? (
-          <span
-            aria-hidden="true"
-            className="absolute right-3 top-3 flex size-7 items-center justify-center rounded-full bg-ink/55 text-cream backdrop-blur-[2px]"
-          >
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M8 5v14l11-7z" />
-            </svg>
-          </span>
-        ) : null}
-      </a>
-    </li>
-  );
-}
 
 /**
  * Instagram carousel — a window into what the studio is currently shipping.
@@ -93,7 +17,7 @@ function FeedSlide({ slide, index }: { slide: Slide; index: number }) {
 export async function Feed() {
   const live = await getInstagramPosts(10);
 
-  const slides: Slide[] = live.length
+  const slides: GallerySlide[] = live.length
     ? live.map((post) => ({
         key: post.id,
         src: post.imageUrl,
@@ -147,11 +71,7 @@ export async function Feed() {
           {feedSection.intro}
         </Reveal>
 
-        <Carousel label="Publicaciones de OUSHY Studio" className="mt-[clamp(36px,6vh,56px)]">
-          {slides.map((slide, index) => (
-            <FeedSlide key={slide.key} slide={slide} index={index} />
-          ))}
-        </Carousel>
+        <FeedGallery slides={slides} />
 
         <Reveal className="mt-[clamp(28px,4vh,40px)] flex justify-center">
           <PillLink href={contact.instagram} variant="outline">
